@@ -43,7 +43,7 @@ function handleError(res, reason, message, code) {
     res.status(code || 500).json({'error': message});
 }
 
-//RESTful API for setting(backgroud color, input fields, logo imgae)
+// RESTful API for setting(backgroud color, input fields, logo imgae)
 // read color and upload color
 app.get('/color', function (req, res){
     fs.readFile('dist/admin/assets/color/color.json', function(err, content) {
@@ -78,3 +78,58 @@ app.post('/color', function (req, res){
     }
     
 })
+
+// Restful API for mongodb
+// Get all records
+app.get('/records', function(req, res){
+    db.collection(RECORDS_COLLECTION).find({}).toArray(function(err, records) {
+        if (err) {
+            handleError(res, err.message, "Failed to get records.");
+        } else {
+            res.status(200).json(records);
+        }
+    });
+});
+  
+// Create a record
+app.post('/records', function(req, res){
+    let newRecordDetails = req.body;
+    if (!req.body.invoiceID) {
+        handleError(res, "Invalid invoice input", "Must provide a name.", 400);
+    } else {
+        db.collection(RECORDS_COLLECTION).insertOne(newRecordDetails, function(err, record){
+            if (err) {
+                handleError(res, err.message, "Failed to create new record.");
+            } else {
+                res.status(201).json(record);
+            }
+        })
+    }
+});
+  
+// Get a single record
+app.get('/records/:invoiceID', function(req, res){
+    db.collection(RECORDS_COLLECTION).findOne({invoiceID: req.params.invoiceID}, function(err, record){
+        if (err) {
+            handleError(res, err,message, "Failed to get record");
+        } else {
+            res.status(200).json(record);
+        }
+    });
+});
+
+  // Update a single record
+  // app.put('/records/:invoiceID', function(req, res){
+  
+  // });
+  
+  // Delete a single record
+  app.delete('/records/:invoiceID', function(req, res){
+    db.collection(RECORDS_COLLECTION).deleteOne({invoiceID: req.params.invoiceID}, function(err, record){
+      if(err) {
+        handleError(res, err.message, "Failed to delete record");
+      } else {
+        res.status(200).json(req.params.invoiceID);
+      }
+    });
+  });
