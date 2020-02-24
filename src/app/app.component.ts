@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './authentication/authentication.service';
 import { User, Role } from './_models';
+import { SettingService } from './setting/setting.service';
+import { log } from 'util';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +12,37 @@ import { User, Role } from './_models';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  currentUser: User;
+    currentUser: User;
+    mainStyle: Object;
+    linkStyle: Object;
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private setting: SettingService
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    }
+
+    ngOnInit() {
+        this.onGetColor();
+        this.setting.currentStyle.subscribe(style => {
+            this.mainStyle = {
+            background: style["background"]
+            };
+            this.linkStyle = {
+            color: style["color"],
+            };
+        });
+        
+    }
+    
+    onGetColor() {
+        this.setting.getColor().subscribe((res) => {
+            let colorJSON = res;
+            console.log(colorJSON);
+            this.setting.changeStyle(colorJSON);
+        });
     }
 
     get isAdmin() {

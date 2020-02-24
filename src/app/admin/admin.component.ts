@@ -20,12 +20,12 @@ export class AdminComponent implements OnInit {
   constructor(private userService: UserService, private setting: SettingService) { }
 
   ngOnInit() {
-      this.loading = true;
-      this.userService.getAll().pipe(first()).subscribe(users => {
-          this.loading = false;
-          this.users = users;
-      });
-      this.setting.currentStyle.subscribe(style => this.style = style);
+    this.setting.currentStyle.subscribe(style => this.style = style);
+    this.loading = true;
+    this.userService.getAll().pipe(first()).subscribe(users => {
+        this.loading = false;
+        this.users = users;
+    });
   }
 
   changeBg(bgColor) {
@@ -40,7 +40,6 @@ export class AdminComponent implements OnInit {
       'background': bgColor,
       'color': linkColor
     }).subscribe((res) => {
-      console.log(res);
       this.setting.changeStyle(newStyle);
     });
   }
