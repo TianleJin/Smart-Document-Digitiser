@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { SettingService } from '../settingservice/setting.service';
+import { SettingService } from '../setting/setting.service';
 
 @Component({
   selector: 'app-color-picker',

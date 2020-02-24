@@ -1,4 +1,4 @@
-<div class="card mt-4">
+<!-- <div class="card mt-4">
     <h4 class="card-header">Admin</h4>
     <div class="card-body">
         <p>This page can be accessed <u>only by administrators</u>.</p>
@@ -8,4 +8,125 @@
             <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
         </ul>
     </div>
+</div> -->
+
+<div class="container">
+    <div>
+        <br>
+        <h1 >Setting</h1>
+        <br>
+    </div>
+    <!--Main Colour Scheme Picker-->
+    <!-- <div class="container">
+        <br>
+        <div class="row">
+            <h3>Main Color Scheme</h3>
+        </div>
+        <br>
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    Pick a Colour
+                </div>
+                <div class="card-body">
+                    <app-color-picker #main></app-color-picker>
+                    <button type="button" class="btn btn-outline-primary" (click)="changeBg(main.color)">Change Colour</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!--Logo Uploader-->
+    <!-- <div class="container">
+        <br>
+        <div class="row">
+            <h3>Display Logo</h3>
+        </div>
+        <br>
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    Upload New Logo
+                </div>
+                <div class="card-body">
+                    <app-logo-picker></app-logo-picker>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+   <!--Setting Logo-->
+<!-- <div class="card m-3">
+    <h5 class="card-header">Customize Logo</h5>
+    <div class="card-body">
+        <div class="container">
+            <div style="text-align: center">
+                <form>      
+                  <div>
+                    <input type="file" name="image" (change)="selectImage($event)" />
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center">
+        <button class="btn btn-primary mr-1" type="submit" (click)="onSubmit()">Set Logo</button>
+    </div>
+</div> -->
+<!--Setting Color-->
+<div class="card m-3">
+    <h5 class="card-header">Customize Color</h5>
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                    <!-- <div class="card-body">
+                        <app-color-picker #main></app-color-picker>
+                       
+                    </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center">
+        <button class="btn btn-primary mr-1" type="button" (click)="changeBg(main.color)">Set Colour</button>
+    </div>
 </div>
+<!--Setting Field-->
+<!-- <form [formGroup]="dynamicForm" (ngSubmit)="onSubmitFields()">
+    <div class="card m-3">
+        <h5 class="card-header">Customize Fields</h5>
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Number of Fields</label>
+                    <select formControlName="numberOfFields" class="form-control" (change)="onChangeFields($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfFields.errors }">
+                        <option value=""></option>
+                        <option *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]">{{i}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.numberOfFields.errors" class="invalid-feedback">
+                        <div *ngIf="f.numberOfFields.errors.required">Number of fields is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let field of t.controls; let i = index" class="list-group list-group-flush">
+            <div class="list-group-item">
+                <h5 class="card-title">Field {{i + 1}}</h5>
+                <div [formGroup]="field" class="form-row">
+                    <div class="form-group col-6">
+                        <label>Name</label>
+                        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && field.controls.name.errors }" />
+                        <div *ngIf="submitted && field.controls.name.errors" class="invalid-feedback">
+                            <div *ngIf="field.controls.name.errors.required">Name is required</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <button class="btn btn-primary mr-1" type="submit">Set Fields</button>
+            <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
+            <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
+        </div>
+    </div>
+</form>    -->
+</div>
+
