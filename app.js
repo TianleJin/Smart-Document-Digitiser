@@ -133,3 +133,33 @@ app.delete('/records/:invoiceID', function(req, res){
         }
     });
 });
+
+// read fields and upload fields
+app.get('/field', (req, res) => {
+    fs.readFile('dist/admin/assets/field/field.json', function(err, content) {
+        if (err) {
+            throw err;
+        } else {
+            res.send(content);
+        }
+    })
+});
+  
+app.post('/field', (req, res) => {
+const jsonString = JSON.stringify(req.body);
+    fs.writeFile('dist/admin/assets/field/field.json', jsonString, err => {
+        if (err) {
+            console.log('Error writing file', err);
+        } else {
+            console.log('Successfully wrote field file');
+        }
+    })
+    
+    fs.writeFile('src/assets/field/field.json', jsonString, err => {
+        if (err) {
+            console.log('Error writing file', err);
+        } else {
+            console.log('Successfully wrote field file');
+        }
+    })
+});

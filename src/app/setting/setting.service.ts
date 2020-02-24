@@ -27,15 +27,15 @@ export class SettingService {
   //   return this.http.post('/image', data);
   // }
 
-  // // get fields
-  // getFields() {
-  //   return this.http.get('/field');
-  // }
+  // get fields
+  getFields() {
+    return this.http.get('/field');
+  }
 
-  // // set fields
-  // setFields(data) {
-  //   return this.http.post('/field', data);
-  // }
+  // set fields
+  setFields(data) {
+    return this.http.post('/field', data);
+  }
 
   // get color
   getColor() {
