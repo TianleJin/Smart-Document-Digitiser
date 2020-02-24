@@ -4,7 +4,7 @@ const mongodb = require('mongodb');
 const fs = require('fs');
 
 const mongoURI = "mongodb://" + process.argv[2] + ":27017/infosys";
-console.log("Connecting to MongoDB Service=" + mongoURI);
+const RECORDS_COLLECTION = 'records';
 let path = require('path');
 
 
@@ -118,18 +118,18 @@ app.get('/records/:invoiceID', function(req, res){
     });
 });
 
-  // Update a single record
-  // app.put('/records/:invoiceID', function(req, res){
-  
-  // });
-  
-  // Delete a single record
-  app.delete('/records/:invoiceID', function(req, res){
+// Update a single record
+// app.put('/records/:invoiceID', function(req, res){
+
+// });
+
+// Delete a single record
+app.delete('/records/:invoiceID', function(req, res){
     db.collection(RECORDS_COLLECTION).deleteOne({invoiceID: req.params.invoiceID}, function(err, record){
-      if(err) {
-        handleError(res, err.message, "Failed to delete record");
-      } else {
-        res.status(200).json(req.params.invoiceID);
-      }
+        if(err) {
+            handleError(res, err.message, "Failed to delete record");
+        } else {
+            res.status(200).json(req.params.invoiceID);
+        }
     });
-  });
+});
