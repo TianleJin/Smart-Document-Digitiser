@@ -8,7 +8,6 @@ const mongoURI = "mongodb://" + process.argv[2] + ":27017/infosys";
 const RECORDS_COLLECTION = 'records';
 let path = require('path');
 
-
 //const records = require('./routers/record');
 
 const app = express();
@@ -107,7 +106,7 @@ app.get('/color', function (req, res){
         if (err) {
             handleError(res, err.message, "Failed to get color.");
         } else {
-            res.send(content);
+            res.status(200).send(content);
         }
     })
 });
@@ -115,13 +114,13 @@ app.get('/color', function (req, res){
 app.post('/color', function (req, res){
     const jsonString = JSON.stringify(req.body);
     if (!jsonString) {
-        handleError(res, "Invalid color JSON file", "Must provide a color.", 400);
+        handleError(res, "Invalid color JSON file", "Must provide a color JSON file.", 400);
     } else {
         fs.writeFile('dist/admin/assets/color/color.json', jsonString, function(err, content){
             if (err) {
                 handleError(res, err.message, "Failed to write color into dist/admin/assets.");
             } else {
-                console.log('Successfully wrote color file');  
+                res.status(200); 
             }
         })
     
@@ -129,7 +128,7 @@ app.post('/color', function (req, res){
             if (err) {
                 handleError(res, err.message, "Failed to write color into src/assets.");
             } else {
-                console.log('Successfully wrote color file');  
+                res.status(200); 
             }
         })
     } 
@@ -143,7 +142,7 @@ app.get('/field', (req, res) => {
         if (err) {
             handleError(res, err.message, "Failed to get field.");
         } else {
-            res.send(content);
+            res.status(200).send(content);
         }
     })
 });
@@ -151,27 +150,26 @@ app.get('/field', (req, res) => {
 app.post('/field', (req, res) => {
     const jsonString = JSON.stringify(req.body);
     if (!jsonString) {
-        handleError(res, "Invalid color JSON file", "Must provide a color.", 400);
+        handleError(res, "Invalid field JSON file", "Must provide a field JSON file.", 400);
     } else {
         fs.writeFile('dist/admin/assets/field/field.json', jsonString, err => {
             if (err) {
-                console.log('Error writing file', err);
+                handleError(res, err.message, "Failed to write field into dist/admin/assets.");
             } else {
-                console.log('Successfully wrote field file');       
+                res.status(200);     
             }
         })
         fs.writeFile('src/assets/field/field.json', jsonString, err => {
             if (err) {
-                console.log('Error writing file', err);
+                handleError(res, err.message, "Failed to write field into src/assets.");
             } else {
-                console.log('Successfully wrote field file');
+                res.status(200);   
             }
         })
     }
 });
 
 // read image and upload image
-
 // Set storage engine
 // Destination is server directory src/assets/img
 const destA = multer.diskStorage({
