@@ -25,21 +25,19 @@
         <div class="col-12">
             <h3>Details</h3>
         </div>
-        <div class="form-group" >
-            <label for="invoiceID">Invoice ID</label>
-            <input type="text" class="form-control" id="invoiceID" [(ngModel)]="invoiceID">
-        </div>
-        <div class="form-group" *ngFor="let field of fieldArray; let i = index;">
-            <label for="i">{{field}}</label>
-            <input type="text" class="form-control" id="i" [(ngModel)]="valueArray[i]">
-        </div>
-        <hr>
-        <button type="button" class="btn btn-warning" (click)="clearDetails()">Clear</button>
-        <div class="divider"></div>
-        <button type="button" class="btn btn-primary" (click)="onSaveDetails()">Save Details</button>
-        <!-- <form>
-
-        </form> -->
+            <div class="form-group" >
+                <label for="invoiceID">Invoice ID</label>
+                <input type="text" class="form-control" id="invoiceID" [(ngModel)]="invoiceID">
+                <small id="dateHelp" class="form-text text-muted">Current date will be recorded as Recording Date</small>
+            </div>
+            <div class="form-group" *ngFor="let field of fieldArray; let i = index;">
+                <label for="i">{{field}}</label>
+                <input type="text" class="form-control" id="i" [(ngModel)]="valueArray[i]">
+            </div>
+            <hr>
+            <button type="button" class="btn btn-warning" (click)="clearDetails()">Clear</button>
+            <div class="divider"></div>
+            <button type="button" class="btn btn-primary" (click)="onSaveDetails()">Save Details</button>
     </div>
     <!--STEP2-->
     <div class="section" *ngIf="section==2">

@@ -107,7 +107,7 @@ app.get('/color', function (req, res){
         if (err) {
             handleError(res, err.message, "Failed to get color.");
         } else {
-            res.status(200).json(content);
+            res.send(content);
         }
     })
 });
@@ -121,7 +121,7 @@ app.post('/color', function (req, res){
             if (err) {
                 handleError(res, err.message, "Failed to write color into dist/admin/assets.");
             } else {
-                res.status(201).json(content);
+                console.log('Successfully wrote color file');  
             }
         })
     
@@ -129,7 +129,7 @@ app.post('/color', function (req, res){
             if (err) {
                 handleError(res, err.message, "Failed to write color into src/assets.");
             } else {
-                res.status(201).json(content);
+                console.log('Successfully wrote color file');  
             }
         })
     } 
@@ -143,7 +143,7 @@ app.get('/field', (req, res) => {
         if (err) {
             handleError(res, err.message, "Failed to get field.");
         } else {
-            res.status(200).json(content);
+            res.send(content);
         }
     })
 });
@@ -157,10 +157,9 @@ app.post('/field', (req, res) => {
             if (err) {
                 console.log('Error writing file', err);
             } else {
-                console.log('Successfully wrote field file');
+                console.log('Successfully wrote field file');       
             }
         })
-        
         fs.writeFile('src/assets/field/field.json', jsonString, err => {
             if (err) {
                 console.log('Error writing file', err);

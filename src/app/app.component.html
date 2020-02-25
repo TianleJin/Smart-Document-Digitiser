@@ -1,15 +1,15 @@
 <!-- nav -->
-<nav class="navbar navbar-expand" *ngIf="currentUser" [ngStyle]="mainStyle">
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser" >
   <div class="navbar-brand">
     <a class="nav-item">
       <img src="../assets/img/logo.png" alt="Logo" width="60" height="60">
     </a>
   </div>
   <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [ngStyle]="linkStyle">Home</a>
-      <a class="nav-item nav-link" routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin" [ngStyle]="linkStyle">Admin</a>
-      <a class="nav-item nav-link" routerLink="/track" routerLinkActive="active" [ngStyle]="linkStyle">Track</a>
-      <a class="nav-item nav-link" (click)="logout()" routerLinkActive="active" [ngStyle]="linkStyle">Logout</a>
+      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" >Home</a>
+      <a class="nav-item nav-link" routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin" >Admin</a>
+      <a class="nav-item nav-link" routerLink="/track" routerLinkActive="active" >Track</a>
+      <a class="nav-item nav-link" (click)="logout()" routerLinkActive="active" >Logout</a>
   </div>
 </nav>
 
@@ -18,12 +18,9 @@
   <router-outlet></router-outlet>
 </div>
 
-<!-- credits -->
-<!-- <div class="text-center mt-4">
-  <p>
-      <a href="#" target="_top">Angular 8 - Role Based Authorization Tutorial with Example</a>
-  </p>
-  <p>
-      <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
-  </p>
-</div> -->
+<!-- Footer -->
+<!-- <footer class="page-footer font-small mdb-color lighten-3 pt-4" [ngStyle]="mainStyle">
+  <div class="footer-copyright text-center py-3" [ngStyle]="linkStyle">© 2020 Copyright:
+    <a href="https://infosys.com" [ngStyle]="linkStyle"> Infosys.com</a>
+  </div>
+</footer> -->

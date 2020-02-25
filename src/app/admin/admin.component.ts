@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
   users: User[] = [];
   style;
   images;
+  section;
 
   constructor(private userService: UserService, private setting: SettingService, private formBuilder: FormBuilder) { }
 
@@ -32,6 +33,7 @@ export class AdminComponent implements OnInit {
       numberOfFields: ['', Validators.required],
       fields: new FormArray([])
     });
+    this.section = 1;
   }
 
   // allow user to selcet an image 
@@ -129,4 +131,7 @@ export class AdminComponent implements OnInit {
     this.t.reset();
   }
 
+  changeSection(section){
+    this.section = section;
+  }
 }
