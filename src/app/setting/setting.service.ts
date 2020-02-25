@@ -22,10 +22,10 @@ export class SettingService {
     this.styleSource.next(style);
   }
 
-  // // upload logo image 
-  // uploadImage(data) {
-  //   return this.http.post('/image', data);
-  // }
+  // upload logo image 
+  uploadImage(data) {
+    return this.http.post('/image', data);
+  }
 
   // get fields
   getFields() {

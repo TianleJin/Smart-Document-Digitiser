@@ -34,6 +34,24 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  // allow user to selcet an image 
+  selectImage(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.images = file;
+    }
+  }
+
+  // upload selected image
+  onSubmit(){
+    const formData = new FormData();
+    formData.append('file', this.images);
+    this.setting.uploadImage(formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+  }
+
   changeBg(bgColor) {
     const linkColor = this.linkColor(bgColor);
 

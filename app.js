@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('mongodb');
 const fs = require('fs');
+const multer = require('multer');
 
 const mongoURI = "mongodb://" + process.argv[2] + ":27017/infosys";
 const RECORDS_COLLECTION = 'records';
@@ -43,41 +44,6 @@ function handleError(res, reason, message, code) {
     res.status(code || 500).json({'error': message});
 }
 
-// RESTful API for setting(backgroud color, input fields, logo imgae)
-// read color and upload color
-app.get('/color', function (req, res){
-    fs.readFile('dist/admin/assets/color/color.json', function(err, content) {
-        if (err) {
-            handleError(res, err.message, "Failed to get color.");
-        } else {
-            res.status(200).json(content);
-        }
-    })
-});
-  
-app.post('/color', function (req, res){
-    const jsonString = JSON.stringify(req.body);
-    if (!jsonString) {
-        handleError(res, "Invalid color JSON file", "Must provide a color.", 400);
-    } else {
-        fs.writeFile('dist/admin/assets/color/color.json', jsonString, function(err, content){
-            if (err) {
-                handleError(res, err.message, "Failed to write color into dist/admin/assets.");
-            } else {
-                res.status(201).json(content);
-            }
-        })
-    
-        fs.writeFile('src/assets/color/color.json', jsonString, function(err, content){
-            if (err) {
-                handleError(res, err.message, "Failed to write color into src/assets.");
-            } else {
-                res.status(201).json(content);
-            }
-        })
-    }
-    
-})
 
 // Restful API for mongodb
 // Get all records
@@ -134,32 +100,145 @@ app.delete('/records/:invoiceID', function(req, res){
     });
 });
 
+// RESTful API for setting(backgroud color, input fields, logo imgae)
+// read color and upload color
+app.get('/color', function (req, res){
+    fs.readFile('dist/admin/assets/color/color.json', function(err, content) {
+        if (err) {
+            handleError(res, err.message, "Failed to get color.");
+        } else {
+            res.status(200).json(content);
+        }
+    })
+});
+  
+app.post('/color', function (req, res){
+    const jsonString = JSON.stringify(req.body);
+    if (!jsonString) {
+        handleError(res, "Invalid color JSON file", "Must provide a color.", 400);
+    } else {
+        fs.writeFile('dist/admin/assets/color/color.json', jsonString, function(err, content){
+            if (err) {
+                handleError(res, err.message, "Failed to write color into dist/admin/assets.");
+            } else {
+                res.status(201).json(content);
+            }
+        })
+    
+        fs.writeFile('src/assets/color/color.json', jsonString, function(err, content){
+            if (err) {
+                handleError(res, err.message, "Failed to write color into src/assets.");
+            } else {
+                res.status(201).json(content);
+            }
+        })
+    } 
+})
+
+
+
 // read fields and upload fields
 app.get('/field', (req, res) => {
     fs.readFile('dist/admin/assets/field/field.json', function(err, content) {
         if (err) {
-            throw err;
+            handleError(res, err.message, "Failed to get field.");
         } else {
-            res.send(content);
+            res.status(200).json(content);
         }
     })
 });
   
 app.post('/field', (req, res) => {
-const jsonString = JSON.stringify(req.body);
-    fs.writeFile('dist/admin/assets/field/field.json', jsonString, err => {
-        if (err) {
-            console.log('Error writing file', err);
-        } else {
-            console.log('Successfully wrote field file');
-        }
-    })
-    
-    fs.writeFile('src/assets/field/field.json', jsonString, err => {
-        if (err) {
-            console.log('Error writing file', err);
-        } else {
-            console.log('Successfully wrote field file');
-        }
-    })
+    const jsonString = JSON.stringify(req.body);
+    if (!jsonString) {
+        handleError(res, "Invalid color JSON file", "Must provide a color.", 400);
+    } else {
+        fs.writeFile('dist/admin/assets/field/field.json', jsonString, err => {
+            if (err) {
+                console.log('Error writing file', err);
+            } else {
+                console.log('Successfully wrote field file');
+            }
+        })
+        
+        fs.writeFile('src/assets/field/field.json', jsonString, err => {
+            if (err) {
+                console.log('Error writing file', err);
+            } else {
+                console.log('Successfully wrote field file');
+            }
+        })
+    }
+});
+
+// read image and upload image
+
+// Set storage engine
+// Destination is server directory src/assets/img
+const destA = multer.diskStorage({
+    destination: 'src/assets/img',
+    filename: function(req, file, cb){
+      cb(null, "logo" +  path.extname(file.originalname));
+    }
+});
+
+// Set storage engine
+// Destination is Angular app output directory 
+const destB = multer.diskStorage({
+    destination: 'dist/admin/assets/img',
+    filename: function(req, file, cb){
+        cb(null, "logo" +  path.extname(file.originalname));
+    }
+});
+
+// Init UploadA
+const uploadA = multer({
+    storage: destA,
+    limits:{fileSize: 1000000},
+    fileFilter: function(req, file, cb){
+      checkFileType(file, cb);
+    }
+});
+  
+// Init UploadA
+const uploadB = multer({
+    storage: destB,
+    limits:{fileSize: 1000000},
+    fileFilter: function(req, file, cb){
+        checkFileType(file, cb);
+    }
+});
+
+// Check File Type
+function checkFileType(file, cb){
+    // Allowed ext
+    const filetypes = /jpeg|jpg|png|gif/;
+    // Check ext
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    // Check mime
+    const mimetype = filetypes.test(file.mimetype);
+  
+    if(mimetype && extname){
+      return cb(null,true);
+    } else {
+      cb('Error: Images Only!');
+    }
+};
+
+// Upload file function
+function fileUpload(req, res, next) {
+    uploadA.single('file')(req, res, next);
+    uploadB.single('file')(req, res, next);
+    next();
+};
+
+// Upload image api
+app.post('/image', fileUpload, (req, res, next) => {
+    const file = req.file;
+    res.send("Received files");
+    // if (!file) {
+    //     handleError(res, "Invalid image file", "Must provide a image.", 400);
+    // } else {
+    //     console.log('Successfully upload file');
+    // }
 });

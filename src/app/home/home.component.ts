@@ -25,13 +25,10 @@ export class HomeComponent implements OnInit {
   videoHeight = 0;
   // basic info fields
   invoiceID: String = "";
-  //invoiceNum: String = "";
-  //issuedDate: String = "";
   recordDate: String = "";
-  //companyName: String = "";
-  //staffNum: String = "";
   status: String;
   comments: String;
+
   picture: String;
   pictures: Array<String> = [];
   image;
@@ -133,6 +130,7 @@ export class HomeComponent implements OnInit {
         temp.push(this.valueArray[i]);
         this.pairArray.push(temp);
       }
+      console.log(this.pairArray);
       this.changeSection(2);
     };
   }

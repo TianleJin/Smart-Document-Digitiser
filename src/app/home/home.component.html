@@ -34,9 +34,12 @@
             <input type="text" class="form-control" id="i" [(ngModel)]="valueArray[i]">
         </div>
         <hr>
-        <button type="button" class="btn btn-outline-danger" (click)="clearDetails()">Clear</button>
+        <button type="button" class="btn btn-warning" (click)="clearDetails()">Clear</button>
         <div class="divider"></div>
-        <button type="button" class="btn btn-outline-success" (click)="onSaveDetails()">Save Details</button>
+        <button type="button" class="btn btn-primary" (click)="onSaveDetails()">Save Details</button>
+        <!-- <form>
+
+        </form> -->
     </div>
     <!--STEP2-->
     <div class="section" *ngIf="section==2">
@@ -87,7 +90,7 @@
                 <td>Recording Date</td>
                 <td>{{recordDate}}</td>
             </tr>  
-            <tr *ngFor="let pair of pairArray; let i of index">
+            <tr *ngFor="let pair of pairArray">
                 <td>{{pair[0]}}</td>
                 <td>{{pair[1]}}</td>
             </tr>
