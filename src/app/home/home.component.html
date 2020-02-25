@@ -1,4 +1,4 @@
-<div class="card mt-4">
+<!-- <div class="card mt-4">
     <h4 class="card-header">Home</h4>
     <div class="card-body">
         <p>You're logged in with Angular 8 & JWT!!</p>
@@ -9,5 +9,106 @@
         <ul *ngIf="userFromApi">
             <li>{{userFromApi.firstName}} {{userFromApi.lastName}}</li>
         </ul>
+    </div>
+</div> -->
+
+<div>
+    <div>
+        <br>
+        <h1 class="container">New Invoice</h1>
+    </div>
+    <hr>
+    <!--Tab Content-->
+    <!--STEP1-->
+    <div class="container">
+    <div class="section" *ngIf="section==1" >
+        <div class="col-12">
+            <h3>Details</h3>
+        </div>
+        <div class="form-group" >
+            <label for="invoiceID">Invoice ID</label>
+            <input type="text" class="form-control" id="invoiceID" [(ngModel)]="invoiceID">
+        </div>
+        <div class="form-group" *ngFor="let field of fieldArray; let i = index;">
+            <label for="i">{{field}}</label>
+            <input type="text" class="form-control" id="i" [(ngModel)]="valueArray[i]">
+        </div>
+        <hr>
+        <button type="button" class="btn btn-outline-danger" (click)="clearDetails()">Clear</button>
+        <div class="divider"></div>
+        <button type="button" class="btn btn-outline-success" (click)="onSaveDetails()">Save Details</button>
+    </div>
+    <!--STEP2-->
+    <div class="section" *ngIf="section==2">
+        <div>
+            <h3>Camera</h3>
+        </div>
+        <!-- <div class="col-12">
+            <div class="container vh-100">
+             </div>
+        </div> -->
+        <div class="d-flex flex-column align-items-center">
+            <div class="p-1" >
+                <video #video class="vid" autoplay [hidden]="!isShow"></video>
+             </div>
+             <div class="p-1" [hidden]="isShow">
+                <canvas #canvas class="vid"></canvas>
+             </div>
+             <!-- <div class="pb-2">
+                <button class="btn btn-primary" (click)="capture()">Capture Image</button>
+             </div> -->
+             <div class="pb-2">
+                <button class="btn btn-primary" (click)="capture()" [hidden]="!isShow">Capture Image</button>
+                <button class="btn btn-primary" (click)="storePictures()" [hidden]="isShow">Save Picture</button>
+                <div class="divider"></div>
+                <button class="btn btn-primary" (click)="retake()" [hidden]="isShow">Retake</button>
+                <div class="divider"></div>
+                <!-- <button class="btn btn-primary" (click)="deletePictures()">Delete Pictures</button> -->
+             </div>
+             <div >
+             <button class="btn btn-primary" (click)="changeSection(1)">Previous</button>
+             <div class="divider"></div>
+             <button class="btn btn-primary" (click)="changeSection(3); retake()">Next</button>
+            </div>
+
+        </div>
+    </div>
+    <!--STEP3-->
+    <div class="section" *ngIf="section==3">
+        <div class="col-12">
+            <h3>Review</h3>
+        </div>
+        <table class="table table-striped">
+            <tr>
+                <td>Invoice ID</td>
+                <td>{{invoiceID}}</td>
+            </tr>
+            <tr>
+                <td>Recording Date</td>
+                <td>{{recordDate}}</td>
+            </tr>  
+            <tr *ngFor="let pair of pairArray; let i of index">
+                <td>{{pair[0]}}</td>
+                <td>{{pair[1]}}</td>
+            </tr>
+        </table>
+        <!-- <ul>
+            <li *ngFor="let p of pictures">
+                <img src="{{ p }}" height="100" />
+            </li>
+        </ul> -->
+        <div>
+            <button class="btn btn-primary" (click)="changeSection(2)">Previous</button>
+            <div class="divider"></div>
+            <button class="btn btn-primary" (click)="onSaveRecord()">Upload</button>
+        </div>
+    </div>
+    <!--Upload Feedback-->
+    <div class="section" *ngIf="section==4">
+        <h3>Your record has been uploaded.</h3><br>
+        <button type="button" class="btn btn-primary" (click)="clearDetails(); changeSection(1)">Home</button>
+        <div class="divider"></div>
+        <button type="button" class="btn btn-primary" routerLink="/track" routerLinkActive="active">Tracking</button>
+    </div>
     </div>
 </div>

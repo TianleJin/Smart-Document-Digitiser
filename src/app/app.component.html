@@ -1,5 +1,5 @@
 <!-- nav -->
-<nav class="navbar navbar-expand" [ngStyle]="mainStyle">
+<nav class="navbar navbar-expand" *ngIf="currentUser" [ngStyle]="mainStyle">
   <div class="navbar-nav">
       <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [ngStyle]="linkStyle">Home</a>
       <a class="nav-item nav-link" routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin" [ngStyle]="linkStyle">Admin</a>
