@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { fakeBackendProvider } from './_helpers/fake-backend';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -8,6 +10,7 @@ import { SettingService } from './setting/setting.service';
 import { faHome, faCog, faTable, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { log } from 'util';
 import styleObj from '../assets/color/color.json';
+
 
 @Component({
   selector: 'app-root',
@@ -21,6 +24,9 @@ export class AppComponent {
     faTable = faTable;
     faSignOutAlt = faSignOutAlt;
 
+    // file path
+    private COLOR_PATH = 'assets/color/color.json';
+
     currentUser: User;
     mainStyle: Object;
     linkStyle: Object;
@@ -28,14 +34,28 @@ export class AppComponent {
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,
-        private setting: SettingService
+        private setting: SettingService,
+        private http: HttpClient
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+        this.getColor().subscribe(data => {
+            console.log(data);
+            this.mainStyle = {
+                background: data["background"]
+                };
+                this.linkStyle = {
+                color: data["color"],
+                };
+        })
+    }
+
+    getColor() {
+        return this.http.get(this.COLOR_PATH);
     }
 
     ngOnInit() {
-        this.onGetColor();
-        //this.setting.changeStyle(styleObj);
+        //this.onGetColor();
+        // this.setting.changeStyle(styleObj);
         // this.setting.currentStyle.subscribe(style => {
         //     this.mainStyle = {
         //     background: style["background"]
@@ -44,7 +64,6 @@ export class AppComponent {
         //     color: style["color"],
         //     };
         // });
-        
     }
     
     onGetColor() {
