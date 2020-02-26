@@ -5,6 +5,7 @@ import { AuthenticationService } from './authentication/authentication.service';
 import { User, Role } from './_models';
 import { SettingService } from './setting/setting.service';
 import { log } from 'util';
+import styleObj from '../assets/color/color.json';
 
 @Component({
   selector: 'app-root',
@@ -26,22 +27,28 @@ export class AppComponent {
 
     ngOnInit() {
         this.onGetColor();
-        this.setting.currentStyle.subscribe(style => {
-            this.mainStyle = {
-            background: style["background"]
-            };
-            this.linkStyle = {
-            color: style["color"],
-            };
-        });
+        //this.setting.changeStyle(styleObj);
+        // this.setting.currentStyle.subscribe(style => {
+        //     this.mainStyle = {
+        //     background: style["background"]
+        //     };
+        //     this.linkStyle = {
+        //     color: style["color"],
+        //     };
+        // });
         
     }
     
     onGetColor() {
         this.setting.getColor().subscribe((res) => {
             let colorJSON = res;
-            console.log(colorJSON);
-            this.setting.changeStyle(colorJSON);
+            this.mainStyle = {
+                background: colorJSON["background"]
+                };
+                this.linkStyle = {
+                color: colorJSON["color"],
+                };
+            //this.setting.changeStyle(colorJSON);
         });
     }
 

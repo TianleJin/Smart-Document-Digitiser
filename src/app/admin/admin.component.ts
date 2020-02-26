@@ -61,12 +61,14 @@ export class AdminComponent implements OnInit {
         background: bgColor,
         color: linkColor
     }
+    console.log(newStyle);
+    this.setting.changeStyle(newStyle);
 
     this.setting.setColor({
       'background': bgColor,
       'color': linkColor
     }).subscribe((res) => {
-      this.setting.changeStyle(newStyle);
+      
     });
   }
 

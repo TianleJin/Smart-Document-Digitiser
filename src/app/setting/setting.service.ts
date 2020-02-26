@@ -17,6 +17,10 @@ export class SettingService {
   });
 
   currentStyle = this.styleSource.asObservable();
+
+  getSourceValue(){
+    return this.styleSource;
+  }
   
   changeStyle(style) {
     this.styleSource.next(style);

@@ -20,18 +20,11 @@
     </div>
     <hr>
     <!--nav-->
-    <h3><ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="btn" (click)="changeSection(1)">LOGO</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn" (click)="changeSection(2)">COLOR</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn" (click)="changeSection(3)">FIELD</a>
-        </li>
-      </ul>
-    </h3> 
+    <div class="btn-group d-flex" role="group" aria-label="...">
+        <button type="button" class="btn btn-primary w-100" (click)="changeSection(1)">Logo</button>
+        <button type="button" class="btn btn-primary w-100" (click)="changeSection(2)">Color</button>
+        <button type="button" class="btn btn-primary w-100" (click)="changeSection(3)">Fields</button>
+    </div>
     <!--Setting Logo-->
     <div class="card m-3" *ngIf="section==1">
         <h5 class="card-header">Customize Logo</h5>
@@ -56,7 +49,10 @@
         <div class="card-body">
             <div class="container">
                 <div class="row">
-                    <app-color-picker #main></app-color-picker>
+                    <div class="card-body">
+                        <app-color-picker #main></app-color-picker>
+                        <!-- <button type="button" class="btn btn-outline-primary" (click)="changeBg()">Change Colour</button> -->
+                    </div>
                 </div>
             </div>
         </div>
