@@ -20,6 +20,8 @@ export class TrackComponent implements OnInit {
   numberOfField;
   fieldJSON;
 
+  private FIELD_PATH = 'assets/field/field.json';
+
   
   ngOnInit() {
     this.setUpList();
@@ -51,9 +53,9 @@ export class TrackComponent implements OnInit {
   }
 
   setUpList() {
-    this.setting.getFields().subscribe((res) => {
+    this.http.get(this.FIELD_PATH).subscribe((content) => {
       this.allFields = ["invoiceID", "recordDate"];
-      this.fieldJSON = res;
+      this.fieldJSON = content;
       this.numberOfField = this.fieldJSON["numberOfFields"];
       let fieldObj = this.fieldJSON["fields"];
       for (let j = 0; j < this.numberOfField; j++) {
@@ -66,8 +68,8 @@ export class TrackComponent implements OnInit {
   }
 
   deleteRecord(invoiceID) {
-    this.dbService.deleteRecord(invoiceID).subscribe(result => {this.onGetRecords();});
-    
+    this.dbService.deleteRecord(invoiceID).subscribe(result => {this.onGetRecords();
+    });
   }
 
 }
