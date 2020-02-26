@@ -20,6 +20,7 @@ import { ColorPickerModule } from './color-picker/color-picker.module';
 import { PhotoService } from './photoservice/photo.service';
 import { SettingService } from './settingservice/setting.service';
 import { DatabaseService } from './database/database.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DatabaseService } from './database/database.service';
     HttpClientModule,
     ColorPickerModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
