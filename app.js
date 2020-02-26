@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const mongodb = require('mongodb');
 const fs = require('fs');
 const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
 
 const mongoURI = "mongodb://" + process.argv[2] + ":27017/infosys";
 const RECORDS_COLLECTION = 'records';
@@ -19,6 +21,9 @@ app.use("/", express.static(path.join(__dirname, "dist/admin/")));
 // database variable
 var db;
 
+// Init gfs
+let gfs;
+
 // connect mongodb client
 mongodb.MongoClient.connect(mongoURI, function(err, client) {
   if (err) {
@@ -26,6 +31,8 @@ mongodb.MongoClient.connect(mongoURI, function(err, client) {
     process.exit(1);
   }
   db = client.db();
+  gfs = Grid(db, mongodb);
+  gfs.collection('photos');
   console.log('Database connected successfully');
   // var server = app.listen(process.env.PORT || 4200, function() {
   //   var port = server.address().port;
@@ -238,4 +245,35 @@ app.post('/image', fileUpload, (req, res, next) => {
     // } else {
     //     console.log('Successfully upload file');
     // }
+});
+
+
+//Create storage engine
+const grifsStorage = new GridFsStorage({
+    url: mongoURI,
+    file: (req, file) => {
+      return new Promise((resolve, reject) => {
+        crypto.randomBytes(16, (err, buf) => {
+          if (err) {
+            return reject(err);
+          }
+          const filename = buf.toString('hex') + path.extname(file.originalname);
+          const metadata = req.params.invoiceID;
+          const fileInfo = {
+            filename: filename,
+            bucketName: 'photos',
+            metadata: metadata
+          };
+          resolve(fileInfo);
+        });
+      });
+    }
+  });
+  
+const upload = multer({ grifsStorage });
+
+// @route POST /upload
+// @desc  Uploads file to DB
+app.post('/photo/:invoiceID', upload, (req, res) => {
+    res.json({ file: req.file });
 });

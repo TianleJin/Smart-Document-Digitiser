@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   comments: String;
 
   picture: String;
+  blob;
   pictures: Array<String> = [];
   image;
   canvasElement;
@@ -154,7 +155,7 @@ export class HomeComponent implements OnInit {
       this.dbService.createRecord(obj).subscribe(result => {});
       this.changeSection(4);
       this.clearDetails();
-    } else { this.changeSection(1)}
+    } else {this.changeSection(1)}
   }
 
   clearDetails() {
@@ -170,8 +171,11 @@ export class HomeComponent implements OnInit {
     this.canvas.nativeElement.getContext('2d').drawImage(this.videoElement.nativeElement, 0, 0);
     this.renderer.setProperty(this.videoElement.nativeElement, 'display', "none");
     this.picture = this.canvas.nativeElement.toDataURL("image/png");
-    console.log(this.picture);
+    //console.log(this.picture);
     this.isShow = false;
+    this.blob = this.dataURLtoBlob(this.picture);
+    console.log(this.blob);
+    
     
     //this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
     // console.log(this.canvas.nativeElement.toDataURL("image/png"));
@@ -179,6 +183,15 @@ export class HomeComponent implements OnInit {
     // console.log(this.captures);
   }
 
+  // convert a dataurl to blob
+  dataURLtoBlob(dataurl) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {type:mime});
+  }
   validateFrom() {
     if (this.invoiceID === "") {
       alert("Invoice ID must be provided!");
@@ -194,11 +207,15 @@ export class HomeComponent implements OnInit {
   };
 
   storePictures(){
-    this.pictures.push(this.picture);
+    this.pictures.push(this.blob);
+    this.dbService.createPhoto(this.blob, this.invoiceID).subscribe((res)=>{console.log("photo is uploaded");
+    });
     this.isShow = true;
     // for (let i = 0; i < this.captures.length; i++) {
     //   this.pictures.push(this.captures[i]);
     // }
+    console.log(this.pictures);
+    
   };
 
   deletePictures() {
