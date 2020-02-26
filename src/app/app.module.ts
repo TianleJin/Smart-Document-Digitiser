@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -16,6 +17,9 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { TrackComponent } from './track/track.component';
 import { ColorPickerModule } from './color-picker/color-picker.module';
+import { PhotoService } from './photoservice/photo.service';
+import { SettingService } from './settingservice/setting.service';
+import { DatabaseService } from './database/database.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,10 @@ import { ColorPickerModule } from './color-picker/color-picker.module';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
     // provider used to create fake backend
-    fakeBackendProvider
+    fakeBackendProvider,
+    DatabaseService, 
+    SettingService, 
+    PhotoService
   ],
   bootstrap: [AppComponent]
 })

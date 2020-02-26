@@ -41,37 +41,50 @@
     </div>
     <!--STEP2-->
     <div class="section" *ngIf="section==2">
-        <div>
-            <h3>Camera</h3>
-        </div>
-        <!-- <div class="col-12">
-            <div class="container vh-100">
-             </div>
-        </div> -->
-        <div class="d-flex flex-column align-items-center">
-            <div class="p-1" >
-                <video #video class="vid" autoplay [hidden]="!isShow"></video>
-             </div>
-             <div class="p-1" [hidden]="isShow">
-                <canvas #canvas class="vid"></canvas>
-             </div>
-             <!-- <div class="pb-2">
-                <button class="btn btn-primary" (click)="capture()">Capture Image</button>
-             </div> -->
-             <div class="pb-2">
-                <button class="btn btn-primary" (click)="capture()" [hidden]="!isShow">Capture Image</button>
-                <button class="btn btn-primary" (click)="storePictures()" [hidden]="isShow">Save Picture</button>
-                <div class="divider"></div>
-                <button class="btn btn-primary" (click)="retake()" [hidden]="isShow">Retake</button>
-                <div class="divider"></div>
-                <!-- <button class="btn btn-primary" (click)="deletePictures()">Delete Pictures</button> -->
-             </div>
-             <div >
-             <button class="btn btn-primary" (click)="changeSection(1)">Previous</button>
-             <div class="divider"></div>
-             <button class="btn btn-primary" (click)="changeSection(3); retake()">Next</button>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <button class="btn btn-primary" (click)="changeSection(1)">Back</button>
+                </div>
+                <div class="col-6" style="text-align:right">
+                    <button class="btn btn-primary" (click)="changeSection(3); retake()">Next</button>
+                </div>
             </div>
-
+            <br>
+            <div class="row">
+                <div class="col-12 col-md-6 camera-box">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="text-center">
+                            <h3>Camera</h3>
+                        </div>
+                        <div class="p-1" >
+                            <video #video class="vid" autoplay [hidden]="!isShow"></video>
+                        </div>
+                        <div class="p-1" [hidden]="isShow">
+                            <canvas #canvas class="vid"></canvas>
+                        </div>
+                        <div class="pb-2">
+                            <button class="btn btn-primary" (click)="capture()" [hidden]="!isShow">Capture Image</button>
+                            <button class="btn btn-primary" (click)="storePictures()" [hidden]="isShow">Save Picture</button>
+                            <div class="divider"></div>
+                            <button class="btn btn-primary" (click)="retake()" [hidden]="isShow">Retake</button>
+                            <div class="divider"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 camera-box">
+                    <div class="text-center">
+                        <h3>Preview</h3>
+                    </div>
+                    <div class="preview-area">
+                        <ul class="list-group list-group-vertical-md">
+                            <li class="list-group-item" *ngFor="let field of previewInfo">
+                                {{field}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!--STEP3-->

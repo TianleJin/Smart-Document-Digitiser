@@ -272,8 +272,8 @@ const grifsStorage = new GridFsStorage({
   
 const upload = multer({ grifsStorage });
 
-// @route POST /upload
-// @desc  Uploads file to DB
-app.post('/photo/:invoiceID', upload, (req, res) => {
-    res.json({ file: req.file });
-});
+// // @route POST /upload
+// // @desc  Uploads file to DB
+// app.post('/photo/:invoiceID', upload.single('file'), (req, res) => {
+//     res.json({ file: req.file });
+// });

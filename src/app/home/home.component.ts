@@ -1,8 +1,11 @@
 import { first } from 'rxjs/operators';
 import { DatabaseService } from '../database/database.service';
 import { SettingService } from '../setting/setting.service';
+import { PhotoService } from '../photoservice/photo.service';
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TimeoutError, fromEventPattern, NEVER } from 'rxjs';
+import  DummyData from '../photoservice/sample.json';
 
 import { User } from '@app/_models';
 import { UserService } from '@app/user/user.service';
@@ -41,13 +44,25 @@ export class HomeComponent implements OnInit {
   valueArray = [];
   pairArray = [];
 
+  // jwt key for OCR API
+  jwt: any;
+  document_name: string = "sample.png";
+  template_name: string = "Sample_Receipt";
+  uploadResError: Object; 
+  uploadRes: Object; 
+  getResError: Object; 
+  //getRes: Object;
+  getRes: Object = DummyData;
+  previewInfo = [];
+
   constructor(
       private userService: UserService,
       private authenticationService: AuthenticationService,
       private renderer: Renderer2, 
       private dbService: DatabaseService, 
       private http: HttpClient, 
-      private setting: SettingService
+      private setting: SettingService,
+      private photo: PhotoService
   ) {
       this.currentUser = this.authenticationService.currentUserValue;
   }
@@ -59,6 +74,11 @@ export class HomeComponent implements OnInit {
         this.userFromApi = user;
     });
     this.getFields();
+    this.photo.getJwt().subscribe((data) => {
+      this.jwt = data;
+      console.log(data);
+      console.log(typeof(data));
+    });
   }
 
   @ViewChild('video', { static: false}) videoElement: ElementRef;
@@ -175,13 +195,47 @@ export class HomeComponent implements OnInit {
     this.isShow = false;
     this.blob = this.dataURLtoBlob(this.picture);
     console.log(this.blob);
-    
-    
+    //var blob = this.dataURLtoBlob(this.picture);
+    this.uploadImg(this.blob, this.jwt, this.template_name, this.document_name);  
     //this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
     // console.log(this.canvas.nativeElement.toDataURL("image/png"));
     // console.log(typeof(this.canvas.nativeElement.toDataURL("image/png")));  
     // console.log(this.captures);
   }
+
+  uploadImg(blob, jwt, template_name, document_name) {
+    this.uploadResError = undefined; 
+    this.uploadRes = undefined; 
+    this.getResError = undefined; 
+    this.getRes = undefined;
+    this.photo.uploadImage(jwt, template_name, blob, document_name).subscribe(
+      (data) => {
+        this.uploadRes = data;
+        console.log(this.uploadRes);
+        this.photo.retrieveData(jwt, template_name, document_name).subscribe(
+          (data) => {
+            this.getRes = data;
+            console.log(this.getRes);
+            this.preview();
+          },
+          (err) => {
+            if (err) {
+              this.getResError = err;
+              console.log(this.getResError);
+              this.preview();
+            }
+          }
+        )
+      },
+      (err) => {
+        if (err) {
+          this.uploadResError = err;
+          console.log(this.uploadResError);
+          this.preview();
+        }
+      }
+    )
+  };
 
   // convert a dataurl to blob
   dataURLtoBlob(dataurl) {
@@ -224,6 +278,42 @@ export class HomeComponent implements OnInit {
 
   retake() {
     this.isShow = true;
+  }
+
+  preview() {
+    this.previewInfo = [];
+    if (this.uploadResError) {
+      this.previewInfo.push("Error: Unable to upload to the server. Please try again later!");
+    } else if (this.getResError) {
+      this.previewInfo.push("Error: Unable to connect to the server. Please try again later!");
+    } else {
+      if ("data" in this.getRes) {
+        console.log(this.getRes["data"]);
+        let i = 1;
+        while ("page_" + i in this.getRes["data"]) {
+          const page = this.getRes["data"]["page_" + i];
+          if ("Mapped" in page && page["Mapped"][0] != undefined) {
+            const fieldsData = page["Mapped"][0];
+            console.log(fieldsData);
+            let j = 0;
+            while ("field_" + j in fieldsData) {
+              let text = fieldsData["field_" + j]["Field_Name"] + ": " + fieldsData["field_" + j]["Value"];
+              if ("possible_value_group" in fieldsData["field_" + j]) {
+                text += " " + fieldsData["field_" + j]["possible_value_group"][0];
+              }
+              this.previewInfo.push(text);
+              j++;
+            }
+          } 
+          i++;
+        }
+      }
+    }
+    console.log(this.previewInfo);
+    
+    if (this.previewInfo.length == 0) {
+      this.previewInfo.push("No texts were found in the image. Please try again!");
+    }
   }
 
 

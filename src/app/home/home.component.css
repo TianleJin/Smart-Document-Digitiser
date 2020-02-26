@@ -1,5 +1,45 @@
+.vid {
+    width: 100%;
+    height: 100%;
+}
+
+li {
+    display: inline;
+    padding: 5px;
+}
+
 .divider {
     width: 5px;
     height: auto;
     display: inline-block;
+}
+
+.invoice-title {
+    background-color: yellowgreen;
+}
+
+[hidden] {
+    display: none !important
+}
+
+.camera-box {
+    border: 1px solid #ccc;
+    padding: 20px 0px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.preview-area {
+    padding: 12px;
+    font-size: 16px;
+    color: black;
+    border: 1px solid #aaa;
+    margin: 10px 16px;
+    min-height: 500px;
+}
+
+.list-group-item {
+    border: none;
 }

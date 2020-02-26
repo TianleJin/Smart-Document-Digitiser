@@ -1,0 +1,1842 @@
+{
+    "template_type": "dynamic",
+    "template_name": "Receipt",
+    "pdf_type": "document",
+    "document_name": "Retail_Invoice_sample.pdf",
+    "data": {
+        "page_1": {
+            "dimensions": {
+                "height": 1753,
+                "width": 1240
+            },
+            "table_info": [],
+            "page_level_field_dictonary": {
+                "Receipt Total": [
+                    {
+                        "text": "Total:",
+                        "mid_x": 1009,
+                        "mid_y": 634,
+                        "boundingBox": [
+                            955,
+                            622,
+                            1064,
+                            625,
+                            1063,
+                            647,
+                            954,
+                            644
+                        ],
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    955,
+                                    622,
+                                    1064,
+                                    625,
+                                    1063,
+                                    647,
+                                    954,
+                                    644
+                                ],
+                                "text": "Total:",
+                                "is_field": true
+                            }
+                        ],
+                        "line_no": 15,
+                        "field_id": "140624763881728.0",
+                        "datatype": "general",
+                        "user_configured_field": "Total:",
+                        "fuzzy_score": 100,
+                        "exact_match_field": true,
+                        "mapped": true,
+                        "mapped_id": "field_0"
+                    },
+                    {
+                        "text": "Total:",
+                        "mid_x": 1081,
+                        "mid_y": 662,
+                        "boundingBox": [
+                            1047,
+                            655,
+                            1115,
+                            656,
+                            1115,
+                            669,
+                            1047,
+                            668
+                        ],
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    1047,
+                                    655,
+                                    1115,
+                                    656,
+                                    1115,
+                                    669,
+                                    1047,
+                                    668
+                                ],
+                                "text": "Total:",
+                                "is_field": true
+                            }
+                        ],
+                        "line_no": 16,
+                        "field_id": "140624763882088.0",
+                        "datatype": "general",
+                        "user_configured_field": "Total:",
+                        "fuzzy_score": 100,
+                        "exact_match_field": true,
+                        "mapped": true,
+                        "mapped_id": "field_1"
+                    }
+                ],
+                "Receipt Number": [
+                    {
+                        "text": "TAX INVOICE",
+                        "mid_x": 924,
+                        "mid_y": 322,
+                        "boundingBox": [
+                            896,
+                            312,
+                            1107,
+                            312,
+                            1107,
+                            336,
+                            896,
+                            336
+                        ],
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    896,
+                                    312,
+                                    951,
+                                    313,
+                                    951,
+                                    333,
+                                    896,
+                                    332
+                                ],
+                                "text": "TAX"
+                            },
+                            {
+                                "boundingBox": [
+                                    976,
+                                    313,
+                                    1107,
+                                    315,
+                                    1107,
+                                    336,
+                                    976,
+                                    334
+                                ],
+                                "text": "INVOICE",
+                                "is_field": true
+                            }
+                        ],
+                        "line_no": 5,
+                        "datatype": "general",
+                        "user_configured_field": "Tax Invoice No: ",
+                        "fuzzy_score": 91,
+                        "exact_match_field": true,
+                        "mapped": true,
+                        "mapped_id": "field_2"
+                    },
+                    {
+                        "text": "No:",
+                        "mid_x": 1066,
+                        "mid_y": 872,
+                        "boundingBox": [
+                            1051,
+                            866,
+                            1082,
+                            866,
+                            1082,
+                            879,
+                            1051,
+                            879
+                        ],
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    1051,
+                                    866,
+                                    1082,
+                                    866,
+                                    1082,
+                                    879,
+                                    1051,
+                                    879
+                                ],
+                                "text": "No:"
+                            }
+                        ],
+                        "line_no": 21,
+                        "datatype": "general",
+                        "user_configured_field": "No:",
+                        "fuzzy_score": 100,
+                        "exact_match_field": true,
+                        "mapped": true,
+                        "mapped_id": "field_3"
+                    }
+                ],
+                "Phone": [
+                    {
+                        "text": "Phone:",
+                        "mid_x": 928,
+                        "mid_y": 255,
+                        "boundingBox": [
+                            893,
+                            248,
+                            962,
+                            249,
+                            962,
+                            262,
+                            893,
+                            261
+                        ],
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    893,
+                                    248,
+                                    962,
+                                    249,
+                                    962,
+                                    262,
+                                    893,
+                                    261
+                                ],
+                                "text": "Phone:",
+                                "is_field": true
+                            }
+                        ],
+                        "line_no": 3,
+                        "field_id": "140624763229456.0",
+                        "datatype": "general",
+                        "user_configured_field": "Phone:",
+                        "fuzzy_score": 100,
+                        "exact_match_field": true,
+                        "mapped": true,
+                        "mapped_id": "field_4"
+                    }
+                ],
+                "ABN": [
+                    {
+                        "text": "ABN:",
+                        "mid_x": 927,
+                        "mid_y": 275,
+                        "boundingBox": [
+                            905,
+                            268,
+                            949,
+                            269,
+                            949,
+                            282,
+                            905,
+                            281
+                        ],
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    905,
+                                    268,
+                                    949,
+                                    269,
+                                    949,
+                                    282,
+                                    905,
+                                    281
+                                ],
+                                "text": "ABN:",
+                                "is_field": true
+                            }
+                        ],
+                        "line_no": 4,
+                        "field_id": "140624763230608.0",
+                        "datatype": "general",
+                        "user_configured_field": "ABN:",
+                        "fuzzy_score": 100,
+                        "exact_match_field": true,
+                        "mapped": true,
+                        "mapped_id": "field_5"
+                    }
+                ],
+                "Items": [
+                    {
+                        "text": "items",
+                        "mid_x": 946,
+                        "mid_y": 763,
+                        "boundingBox": [
+                            918,
+                            755,
+                            975,
+                            756,
+                            975,
+                            771,
+                            918,
+                            770
+                        ],
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    918,
+                                    755,
+                                    975,
+                                    756,
+                                    975,
+                                    771,
+                                    918,
+                                    770
+                                ],
+                                "text": "items"
+                            }
+                        ],
+                        "line_no": 19,
+                        "datatype": "general",
+                        "user_configured_field": "Items",
+                        "fuzzy_score": 100,
+                        "exact_match_field": true,
+                        "mapped": true,
+                        "mapped_id": "field_6"
+                    },
+                    {
+                        "text": "DESCRIPTION",
+                        "mid_x": 855,
+                        "mid_y": 442,
+                        "boundingBox": [
+                            788,
+                            434,
+                            922,
+                            437,
+                            922,
+                            450,
+                            788,
+                            447
+                        ],
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    788,
+                                    434,
+                                    922,
+                                    437,
+                                    922,
+                                    450,
+                                    788,
+                                    447
+                                ],
+                                "text": "DESCRIPTION"
+                            }
+                        ],
+                        "line_no": 8,
+                        "datatype": "general",
+                        "user_configured_field": "Description",
+                        "fuzzy_score": 100,
+                        "exact_match_field": true,
+                        "mapped": true,
+                        "mapped_id": "field_7"
+                    }
+                ],
+                "Amount": [
+                    {
+                        "text": "AMOUNT",
+                        "mid_x": 1170,
+                        "mid_y": 448,
+                        "boundingBox": [
+                            1134,
+                            441,
+                            1207,
+                            441,
+                            1207,
+                            454,
+                            1134,
+                            454
+                        ],
+                        "words": [
+                            {
+                                "boundingBox": [
+                                    1134,
+                                    441,
+                                    1207,
+                                    441,
+                                    1207,
+                                    454,
+                                    1134,
+                                    454
+                                ],
+                                "text": "AMOUNT"
+                            }
+                        ],
+                        "line_no": 9,
+                        "datatype": "general",
+                        "user_configured_field": "Amount",
+                        "fuzzy_score": 100,
+                        "exact_match_field": true,
+                        "mapped": true,
+                        "mapped_id": "field_8"
+                    }
+                ]
+            },
+            "Mapped": [
+                {
+                    "field_0": {
+                        "Field_Name": "Receipt Total",
+                        "Field_BoundingBox": [
+                            955,
+                            622,
+                            1064,
+                            625,
+                            1063,
+                            647,
+                            954,
+                            644
+                        ],
+                        "Value": "$15.20",
+                        "Value_BoundingBox": [
+                            1094,
+                            624,
+                            1206,
+                            627,
+                            1205,
+                            653,
+                            1093,
+                            650
+                        ],
+                        "line_number": 15,
+                        "Other_match": [
+                            {
+                                "Value": "In",
+                                "Value_BoundingBox": [
+                                    1011,
+                                    655,
+                                    1031,
+                                    655,
+                                    1031,
+                                    667,
+                                    1011,
+                                    667
+                                ]
+                            }
+                        ],
+                        "identified_field_name": "Total:",
+                        "fuzzy_score": 100,
+                        "value_datatype": "AMOUNT"
+                    },
+                    "field_1": {
+                        "Field_Name": "Receipt Total",
+                        "Field_BoundingBox": [
+                            1047,
+                            655,
+                            1115,
+                            656,
+                            1115,
+                            669,
+                            1047,
+                            668
+                        ],
+                        "Value": "$1.38",
+                        "Value_BoundingBox": [
+                            1147,
+                            657,
+                            1205,
+                            658,
+                            1205,
+                            673,
+                            1147,
+                            672
+                        ],
+                        "line_number": 16,
+                        "Other_match": [
+                            {
+                                "Value": "Credít Card:",
+                                "Value_BoundingBox": [
+                                    971,
+                                    695,
+                                    1114,
+                                    698,
+                                    1114,
+                                    712,
+                                    971,
+                                    709
+                                ]
+                            }
+                        ],
+                        "identified_field_name": "Total:",
+                        "fuzzy_score": 100,
+                        "value_datatype": "AMOUNT"
+                    },
+                    "field_2": {
+                        "Field_Name": "Receipt Number",
+                        "Field_BoundingBox": [
+                            896,
+                            312,
+                            1107,
+                            312,
+                            1107,
+                            336,
+                            896,
+                            336
+                        ],
+                        "Value": "TAKEAWAY",
+                        "Value_BoundingBox": [
+                            927,
+                            363,
+                            1074,
+                            367,
+                            1073,
+                            392,
+                            926,
+                            388
+                        ],
+                        "line_number": 5,
+                        "Other_match": [
+                            {
+                                "Value": null,
+                                "Value_BoundingBox": null
+                            }
+                        ],
+                        "identified_field_name": "TAX INVOICE",
+                        "fuzzy_score": 91,
+                        "value_datatype": "STRING"
+                    },
+                    "field_3": {
+                        "Field_Name": "Receipt Number",
+                        "Field_BoundingBox": [
+                            1051,
+                            866,
+                            1082,
+                            866,
+                            1082,
+                            879,
+                            1051,
+                            879
+                        ],
+                        "Value": "AGAIN",
+                        "Value_BoundingBox": [
+                            1032,
+                            947,
+                            1092,
+                            948,
+                            1092,
+                            961,
+                            1032,
+                            960
+                        ],
+                        "line_number": 21,
+                        "Other_match": [
+                            {
+                                "Value": null,
+                                "Value_BoundingBox": null
+                            }
+                        ],
+                        "identified_field_name": "No:",
+                        "fuzzy_score": 100,
+                        "value_datatype": "STRING"
+                    },
+                    "field_4": {
+                        "Field_Name": "Phone",
+                        "Field_BoundingBox": [
+                            893,
+                            248,
+                            962,
+                            249,
+                            962,
+                            262,
+                            893,
+                            261
+                        ],
+                        "Value": "03",
+                        "Value_BoundingBox": [
+                            980,
+                            249,
+                            1001,
+                            249,
+                            1001,
+                            262,
+                            980,
+                            262
+                        ],
+                        "line_number": 3,
+                        "Other_match": [
+                            {
+                                "Value": null,
+                                "Value_BoundingBox": null
+                            }
+                        ],
+                        "identified_field_name": "Phone:",
+                        "fuzzy_score": 100,
+                        "value_datatype": "NUMERIC",
+                        "possible_value_group": [
+                            "96540606"
+                        ]
+                    },
+                    "field_5": {
+                        "Field_Name": "ABN",
+                        "Field_BoundingBox": [
+                            905,
+                            268,
+                            949,
+                            269,
+                            949,
+                            282,
+                            905,
+                            281
+                        ],
+                        "Value": "38624915395",
+                        "Value_BoundingBox": [
+                            969,
+                            269,
+                            1100,
+                            271,
+                            1100,
+                            285,
+                            969,
+                            283
+                        ],
+                        "line_number": 4,
+                        "Other_match": [
+                            {
+                                "Value": null,
+                                "Value_BoundingBox": null
+                            }
+                        ],
+                        "identified_field_name": "ABN:",
+                        "fuzzy_score": 100,
+                        "value_datatype": "NUMERIC"
+                    },
+                    "field_6": {
+                        "Field_Name": "Items",
+                        "Field_BoundingBox": [
+                            918,
+                            755,
+                            975,
+                            756,
+                            975,
+                            771,
+                            918,
+                            770
+                        ],
+                        "Value": "Change:",
+                        "Value_BoundingBox": [
+                            1045,
+                            738,
+                            1124,
+                            738,
+                            1124,
+                            756,
+                            1045,
+                            756
+                        ],
+                        "line_number": 19,
+                        "Other_match": [
+                            {
+                                "Value": "#32",
+                                "Value_BoundingBox": [
+                                    956,
+                                    799,
+                                    1026,
+                                    800,
+                                    1026,
+                                    832,
+                                    956,
+                                    831
+                                ]
+                            }
+                        ],
+                        "identified_field_name": "items",
+                        "fuzzy_score": 100,
+                        "value_datatype": "AMOUNT",
+                        "possible_value_group": [
+                            "$0,00"
+                        ]
+                    },
+                    "field_7": {
+                        "Field_Name": "Items",
+                        "Field_BoundingBox": [
+                            788,
+                            434,
+                            922,
+                            437,
+                            922,
+                            450,
+                            788,
+                            447
+                        ],
+                        "Value": "green curry vegetable",
+                        "Value_BoundingBox": [
+                            787,
+                            477,
+                            1044,
+                            479,
+                            1044,
+                            496,
+                            787,
+                            491
+                        ],
+                        "line_number": 8,
+                        "Other_match": [
+                            {
+                                "Value": null,
+                                "Value_BoundingBox": null
+                            }
+                        ],
+                        "identified_field_name": "DESCRIPTION",
+                        "fuzzy_score": 100,
+                        "value_datatype": "STRING"
+                    },
+                    "field_8": {
+                        "Field_Name": "Amount",
+                        "Field_BoundingBox": [
+                            1134,
+                            441,
+                            1207,
+                            441,
+                            1207,
+                            454,
+                            1134,
+                            454
+                        ],
+                        "Value": "$14.90 = $14.90",
+                        "Value_BoundingBox": [
+                            1026,
+                            499,
+                            1209,
+                            502,
+                            1209,
+                            518,
+                            1026,
+                            515
+                        ],
+                        "line_number": 9,
+                        "Other_match": [
+                            {
+                                "Value": null,
+                                "Value_BoundingBox": null
+                            }
+                        ],
+                        "identified_field_name": "AMOUNT",
+                        "fuzzy_score": 100,
+                        "value_datatype": "AMOUNT"
+                    }
+                }
+            ],
+            "Unmapped": {
+                "Fields": [
+                    {
+                        "field_0": {
+                            "field_value": "Isan",
+                            "x_point": 974,
+                            "y_point": 214,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        951,
+                                        209,
+                                        996,
+                                        209,
+                                        996,
+                                        220,
+                                        951,
+                                        220
+                                    ],
+                                    "text": "Isan",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 1,
+                            "boundingBox": [
+                                951,
+                                209,
+                                996,
+                                209,
+                                996,
+                                220,
+                                951,
+                                220
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_1": {
+                            "field_value": "Soul",
+                            "x_point": 1035,
+                            "y_point": 216,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        1012,
+                                        209,
+                                        1058,
+                                        209,
+                                        1058,
+                                        222,
+                                        1012,
+                                        222
+                                    ],
+                                    "text": "Soul",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 1,
+                            "boundingBox": [
+                                1012,
+                                209,
+                                1058,
+                                209,
+                                1058,
+                                222,
+                                1012,
+                                222
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_2": {
+                            "field_value": "Australia",
+                            "x_point": 1004,
+                            "y_point": 235,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        950,
+                                        228,
+                                        1059,
+                                        228,
+                                        1059,
+                                        242,
+                                        950,
+                                        242
+                                    ],
+                                    "text": "Australia",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 2,
+                            "boundingBox": [
+                                950,
+                                228,
+                                1059,
+                                228,
+                                1059,
+                                242,
+                                950,
+                                242
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_3": {
+                            "field_value": "96540606",
+                            "x_point": 1065,
+                            "y_point": 256,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        1018,
+                                        249,
+                                        1112,
+                                        250,
+                                        1112,
+                                        264,
+                                        1018,
+                                        263
+                                    ],
+                                    "text": "96540606",
+                                    "datatype": "numeric"
+                                }
+                            ],
+                            "line_no": 3,
+                            "boundingBox": [
+                                1018,
+                                249,
+                                1112,
+                                250,
+                                1112,
+                                264,
+                                1018,
+                                263
+                            ],
+                            "datatype": "NUMERIC",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_4": {
+                            "field_value": "Covers:",
+                            "x_point": 986,
+                            "y_point": 403,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        945,
+                                        396,
+                                        1026,
+                                        397,
+                                        1026,
+                                        410,
+                                        945,
+                                        409
+                                    ],
+                                    "text": "Covers:",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 7,
+                            "boundingBox": [
+                                945,
+                                396,
+                                1026,
+                                397,
+                                1026,
+                                410,
+                                945,
+                                409
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_5": {
+                            "field_value": "1",
+                            "x_point": 1050,
+                            "y_point": 404,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        1048,
+                                        398,
+                                        1053,
+                                        398,
+                                        1053,
+                                        410,
+                                        1048,
+                                        410
+                                    ],
+                                    "text": "1",
+                                    "datatype": "numeric"
+                                }
+                            ],
+                            "line_no": 7,
+                            "boundingBox": [
+                                1048,
+                                398,
+                                1053,
+                                398,
+                                1053,
+                                410,
+                                1048,
+                                410
+                            ],
+                            "datatype": "NUMERIC",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_6": {
+                            "field_value": "byo",
+                            "x_point": 803,
+                            "y_point": 525,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        786,
+                                        515,
+                                        821,
+                                        517,
+                                        820,
+                                        535,
+                                        785,
+                                        533
+                                    ],
+                                    "text": "byo",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 12,
+                            "boundingBox": [
+                                786,
+                                515,
+                                821,
+                                517,
+                                820,
+                                535,
+                                785,
+                                533
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_7": {
+                            "field_value": "$0.30 = $0.30",
+                            "x_point": 1135.5,
+                            "y_point": 550.0,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        1051,
+                                        541,
+                                        1108,
+                                        542,
+                                        1108,
+                                        557,
+                                        1051,
+                                        556
+                                    ],
+                                    "text": "$0.30",
+                                    "datatype": "numeric"
+                                },
+                                {
+                                    "boundingBox": [
+                                        1124,
+                                        547,
+                                        1133,
+                                        547,
+                                        1133,
+                                        552,
+                                        1124,
+                                        552
+                                    ],
+                                    "text": "=",
+                                    "datatype": "text"
+                                },
+                                {
+                                    "boundingBox": [
+                                        1150,
+                                        543,
+                                        1208,
+                                        544,
+                                        1208,
+                                        559,
+                                        1150,
+                                        558
+                                    ],
+                                    "text": "$0.30",
+                                    "datatype": "numeric"
+                                }
+                            ],
+                            "line_no": 13,
+                            "boundingBox": [
+                                1051,
+                                541,
+                                1208,
+                                544,
+                                1208,
+                                559,
+                                1051,
+                                556
+                            ],
+                            "datatype": "AMOUNT",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_8": {
+                            "field_value": "Subtotal:",
+                            "x_point": 1064,
+                            "y_point": 609,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        1011,
+                                        600,
+                                        1116,
+                                        603,
+                                        1116,
+                                        618,
+                                        1011,
+                                        615
+                                    ],
+                                    "text": "Subtotal:",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 14,
+                            "boundingBox": [
+                                1011,
+                                600,
+                                1116,
+                                603,
+                                1116,
+                                618,
+                                1011,
+                                615
+                            ],
+                            "datatype": "STRING",
+                            "is_field": true
+                        }
+                    },
+                    {
+                        "field_9": {
+                            "field_value": "$15.20",
+                            "x_point": 1171,
+                            "y_point": 613,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        1135,
+                                        604,
+                                        1207,
+                                        606,
+                                        1207,
+                                        622,
+                                        1135,
+                                        620
+                                    ],
+                                    "text": "$15.20",
+                                    "datatype": "date"
+                                }
+                            ],
+                            "line_no": 14,
+                            "boundingBox": [
+                                1135,
+                                604,
+                                1207,
+                                606,
+                                1207,
+                                622,
+                                1135,
+                                620
+                            ],
+                            "datatype": "AMOUNT",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_10": {
+                            "field_value": "GST",
+                            "x_point": 866,
+                            "y_point": 660,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        848,
+                                        653,
+                                        883,
+                                        654,
+                                        883,
+                                        666,
+                                        848,
+                                        665
+                                    ],
+                                    "text": "GST",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 16,
+                            "boundingBox": [
+                                848,
+                                653,
+                                883,
+                                654,
+                                883,
+                                666,
+                                848,
+                                665
+                            ],
+                            "datatype": "STRING",
+                            "is_field": true
+                        }
+                    },
+                    {
+                        "field_11": {
+                            "field_value": "Included",
+                            "x_point": 946,
+                            "y_point": 660,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        899,
+                                        652,
+                                        994,
+                                        654,
+                                        994,
+                                        668,
+                                        899,
+                                        666
+                                    ],
+                                    "text": "Included",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 16,
+                            "boundingBox": [
+                                899,
+                                652,
+                                994,
+                                654,
+                                994,
+                                668,
+                                899,
+                                666
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_12": {
+                            "field_value": "In",
+                            "x_point": 1021,
+                            "y_point": 661,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        1011,
+                                        655,
+                                        1031,
+                                        655,
+                                        1031,
+                                        667,
+                                        1011,
+                                        667
+                                    ],
+                                    "text": "In",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 16,
+                            "boundingBox": [
+                                1011,
+                                655,
+                                1031,
+                                655,
+                                1031,
+                                667,
+                                1011,
+                                667
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_13": {
+                            "field_value": "Credít Card:",
+                            "x_point": 1047.0,
+                            "y_point": 703.5,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        971,
+                                        695,
+                                        1044,
+                                        697,
+                                        1044,
+                                        711,
+                                        971,
+                                        709
+                                    ],
+                                    "text": "Credít",
+                                    "datatype": "text"
+                                },
+                                {
+                                    "boundingBox": [
+                                        1058,
+                                        697,
+                                        1114,
+                                        698,
+                                        1114,
+                                        712,
+                                        1058,
+                                        711
+                                    ],
+                                    "text": "Card:",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 17,
+                            "boundingBox": [
+                                971,
+                                695,
+                                1114,
+                                698,
+                                1114,
+                                712,
+                                971,
+                                709
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_14": {
+                            "field_value": "$15.20",
+                            "x_point": 1168,
+                            "y_point": 707,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        1133,
+                                        698,
+                                        1204,
+                                        700,
+                                        1204,
+                                        716,
+                                        1133,
+                                        714
+                                    ],
+                                    "text": "$15.20",
+                                    "datatype": "date"
+                                }
+                            ],
+                            "line_no": 17,
+                            "boundingBox": [
+                                1133,
+                                698,
+                                1204,
+                                700,
+                                1204,
+                                716,
+                                1133,
+                                714
+                            ],
+                            "datatype": "AMOUNT",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_15": {
+                            "field_value": "$0,00",
+                            "x_point": 1174,
+                            "y_point": 748,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        1145,
+                                        740,
+                                        1203,
+                                        740,
+                                        1203,
+                                        755,
+                                        1145,
+                                        755
+                                    ],
+                                    "text": "$0,00",
+                                    "datatype": "numeric"
+                                }
+                            ],
+                            "line_no": 18,
+                            "boundingBox": [
+                                1145,
+                                740,
+                                1203,
+                                740,
+                                1203,
+                                755,
+                                1145,
+                                755
+                            ],
+                            "datatype": "AMOUNT",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_16": {
+                            "field_value": "GST fr",
+                            "x_point": 845.0,
+                            "y_point": 761.5,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        805,
+                                        754,
+                                        841,
+                                        755,
+                                        840,
+                                        768,
+                                        804,
+                                        767
+                                    ],
+                                    "text": "GST",
+                                    "datatype": "text"
+                                },
+                                {
+                                    "boundingBox": [
+                                        856,
+                                        754,
+                                        880,
+                                        755,
+                                        879,
+                                        771,
+                                        855,
+                                        770
+                                    ],
+                                    "text": "fr",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 19,
+                            "boundingBox": [
+                                805,
+                                754,
+                                880,
+                                755,
+                                879,
+                                771,
+                                804,
+                                767
+                            ],
+                            "datatype": "STRING",
+                            "is_field": true
+                        }
+                    },
+                    {
+                        "field_17": {
+                            "field_value": "#32",
+                            "x_point": 991,
+                            "y_point": 816,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        956,
+                                        799,
+                                        1026,
+                                        800,
+                                        1026,
+                                        832,
+                                        956,
+                                        831
+                                    ],
+                                    "text": "#32",
+                                    "datatype": "numeric"
+                                }
+                            ],
+                            "line_no": 20,
+                            "boundingBox": [
+                                956,
+                                799,
+                                1026,
+                                800,
+                                1026,
+                                832,
+                                956,
+                                831
+                            ],
+                            "datatype": "ALPHANUMERIC",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_18": {
+                            "field_value": "14/02/2020",
+                            "x_point": 839,
+                            "y_point": 867,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        780,
+                                        859,
+                                        898,
+                                        862,
+                                        898,
+                                        875,
+                                        780,
+                                        872
+                                    ],
+                                    "text": "14/02/2020",
+                                    "datatype": "date"
+                                }
+                            ],
+                            "line_no": 21,
+                            "boundingBox": [
+                                780,
+                                859,
+                                898,
+                                862,
+                                898,
+                                875,
+                                780,
+                                872
+                            ],
+                            "datatype": "DATE",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_19": {
+                            "field_value": "6:",
+                            "x_point": 939,
+                            "y_point": 870,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        929,
+                                        861,
+                                        949,
+                                        864,
+                                        949,
+                                        878,
+                                        928,
+                                        875
+                                    ],
+                                    "text": "6:",
+                                    "datatype": "numeric"
+                                }
+                            ],
+                            "line_no": 21,
+                            "boundingBox": [
+                                929,
+                                861,
+                                949,
+                                864,
+                                949,
+                                878,
+                                928,
+                                875
+                            ],
+                            "datatype": "ALPHANUMERIC",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_20": {
+                            "field_value": "47 pm",
+                            "x_point": 980.5,
+                            "y_point": 872.0,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        950,
+                                        861,
+                                        972,
+                                        864,
+                                        971,
+                                        878,
+                                        950,
+                                        875
+                                    ],
+                                    "text": "47",
+                                    "datatype": "numeric"
+                                },
+                                {
+                                    "boundingBox": [
+                                        988,
+                                        866,
+                                        1012,
+                                        868,
+                                        1011,
+                                        883,
+                                        987,
+                                        881
+                                    ],
+                                    "text": "pm",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 21,
+                            "boundingBox": [
+                                950,
+                                861,
+                                1012,
+                                868,
+                                1011,
+                                883,
+                                950,
+                                875
+                            ],
+                            "datatype": "ALPHANUMERIC",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_21": {
+                            "field_value": "000120200214112",
+                            "x_point": 870,
+                            "y_point": 888,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        779,
+                                        879,
+                                        960,
+                                        883,
+                                        960,
+                                        897,
+                                        779,
+                                        893
+                                    ],
+                                    "text": "000120200214112",
+                                    "datatype": "numeric"
+                                }
+                            ],
+                            "line_no": 22,
+                            "boundingBox": [
+                                779,
+                                879,
+                                960,
+                                883,
+                                960,
+                                897,
+                                779,
+                                893
+                            ],
+                            "datatype": "NUMERIC",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_22": {
+                            "field_value": "Service:",
+                            "x_point": 839,
+                            "y_point": 908,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        783,
+                                        897,
+                                        895,
+                                        901,
+                                        895,
+                                        918,
+                                        782,
+                                        914
+                                    ],
+                                    "text": "Service:",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 23,
+                            "boundingBox": [
+                                783,
+                                897,
+                                895,
+                                901,
+                                895,
+                                918,
+                                782,
+                                914
+                            ],
+                            "datatype": "AMOUNT",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_23": {
+                            "field_value": "B na",
+                            "x_point": 916.5,
+                            "y_point": 909.0,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        896,
+                                        897,
+                                        910,
+                                        901,
+                                        909,
+                                        918,
+                                        896,
+                                        914
+                                    ],
+                                    "text": "B",
+                                    "datatype": "text"
+                                },
+                                {
+                                    "boundingBox": [
+                                        923,
+                                        902,
+                                        938,
+                                        902,
+                                        937,
+                                        918,
+                                        923,
+                                        918
+                                    ],
+                                    "text": "na",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 23,
+                            "boundingBox": [
+                                896,
+                                897,
+                                938,
+                                902,
+                                937,
+                                918,
+                                896,
+                                914
+                            ],
+                            "datatype": "AMOUNT",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_24": {
+                            "field_value": "PLEASE COME",
+                            "x_point": 956.5,
+                            "y_point": 952.0,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        883,
+                                        944,
+                                        955,
+                                        946,
+                                        955,
+                                        959,
+                                        883,
+                                        957
+                                    ],
+                                    "text": "PLEASE",
+                                    "datatype": "text"
+                                },
+                                {
+                                    "boundingBox": [
+                                        970,
+                                        946,
+                                        1017,
+                                        947,
+                                        1017,
+                                        959,
+                                        970,
+                                        958
+                                    ],
+                                    "text": "COME",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 24,
+                            "boundingBox": [
+                                883,
+                                944,
+                                1017,
+                                947,
+                                1017,
+                                959,
+                                883,
+                                957
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_25": {
+                            "field_value": "Powered",
+                            "x_point": 968,
+                            "y_point": 973,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        926,
+                                        966,
+                                        1010,
+                                        968,
+                                        1010,
+                                        980,
+                                        926,
+                                        978
+                                    ],
+                                    "text": "Powered",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 25,
+                            "boundingBox": [
+                                926,
+                                966,
+                                1010,
+                                968,
+                                1010,
+                                980,
+                                926,
+                                978
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_26": {
+                            "field_value": "by",
+                            "x_point": 1037,
+                            "y_point": 976,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        1026,
+                                        968,
+                                        1048,
+                                        969,
+                                        1048,
+                                        984,
+                                        1026,
+                                        983
+                                    ],
+                                    "text": "by",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 25,
+                            "boundingBox": [
+                                1026,
+                                968,
+                                1048,
+                                969,
+                                1048,
+                                984,
+                                1026,
+                                983
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    },
+                    {
+                        "field_27": {
+                            "field_value": "ABACUS",
+                            "x_point": 986,
+                            "y_point": 994,
+                            "words": [
+                                {
+                                    "boundingBox": [
+                                        951,
+                                        986,
+                                        1022,
+                                        988,
+                                        1022,
+                                        1001,
+                                        951,
+                                        999
+                                    ],
+                                    "text": "ABACUS",
+                                    "datatype": "text"
+                                }
+                            ],
+                            "line_no": 26,
+                            "boundingBox": [
+                                951,
+                                986,
+                                1022,
+                                988,
+                                1022,
+                                1001,
+                                951,
+                                999
+                            ],
+                            "datatype": "STRING",
+                            "is_field": false
+                        }
+                    }
+                ],
+                "Values": []
+            }
+        }
+    },
+    "checkbox": null,
+    "unselected_checkbox": null,
+    "timestamp": "2020-02-17 10:40:58.698083",
+    "ocr_engine": "gcp"
+}
