@@ -1,6 +1,5 @@
 import { first } from 'rxjs/operators';
 import { DatabaseService } from '../database/database.service';
-import { SettingService } from '../setting/setting.service';
 import { PhotoService } from '../photoservice/photo.service';
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -61,13 +60,14 @@ export class HomeComponent implements OnInit {
   getRes: Object = DummyData;
   previewInfo = [];
 
+  private FIELD_PATH = "assets/field/field.json";
+
   constructor(
       private userService: UserService,
       private authenticationService: AuthenticationService,
       private renderer: Renderer2, 
       private dbService: DatabaseService, 
       private http: HttpClient, 
-      private setting: SettingService,
       private photo: PhotoService
   ) {
       this.currentUser = this.authenticationService.currentUserValue;
@@ -92,8 +92,8 @@ export class HomeComponent implements OnInit {
 
   // Get all fields from dist/smart/assets/field/field.json
   getFields() {
-    this.setting.getFields().subscribe((res) => {
-      this.fieldJSON = res;
+    this.http.get(this.FIELD_PATH).subscribe((data) => {
+      this.fieldJSON = data;
       this.numberOfField = this.fieldJSON["numberOfFields"];
       let fieldObj = this.fieldJSON["fields"];
       for (let j = 0; j < this.numberOfField; j++) {

@@ -31,8 +31,6 @@ export class TrackComponent implements OnInit {
       this.recordsDB = data;
       for (let i = 0; i < this.recordsDB.length; i++) {
         var obj = this.recordsDB[i];
-        console.log("recordsDB");
-        console.log(this.recordsDB);
         // this.dbService.getFiles(obj.invoiceID).subscribe((data:any[]) => {
         //   obj['pictures'] = data;
         // })
@@ -48,8 +46,6 @@ export class TrackComponent implements OnInit {
             obj["array"].push("");
           }
         }
-        console.log("obj");
-        console.log(obj);
       }
     });
   }
