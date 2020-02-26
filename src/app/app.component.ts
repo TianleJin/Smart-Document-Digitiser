@@ -1,9 +1,11 @@
+import { fakeBackendProvider } from './_helpers/fake-backend';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './authentication/authentication.service';
 import { User, Role } from './_models';
 import { SettingService } from './setting/setting.service';
+import { faHome, faCog, faTable, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { log } from 'util';
 import styleObj from '../assets/color/color.json';
 
@@ -13,6 +15,12 @@ import styleObj from '../assets/color/color.json';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    // icons
+    faHome = faHome;
+    faCog = faCog;
+    faTable = faTable;
+    faSignOutAlt = faSignOutAlt;
+
     currentUser: User;
     mainStyle: Object;
     linkStyle: Object;

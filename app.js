@@ -182,7 +182,7 @@ app.post('/field', (req, res) => {
 const destA = multer.diskStorage({
     destination: 'src/assets/img',
     filename: function(req, file, cb){
-      cb(null, "logo" +  path.extname(file.originalname));
+      cb(null, "logo" +  path.extname('png'));
     }
 });
 
@@ -191,7 +191,7 @@ const destA = multer.diskStorage({
 const destB = multer.diskStorage({
     destination: 'dist/admin/assets/img',
     filename: function(req, file, cb){
-        cb(null, "logo" +  path.extname(file.originalname));
+        cb(null, "logo" +  path.extname('logo.png'));
     }
 });
 

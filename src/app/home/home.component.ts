@@ -6,6 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/co
 import { HttpClient } from '@angular/common/http';
 import { TimeoutError, fromEventPattern, NEVER } from 'rxjs';
 import  DummyData from '../photoservice/sample.json';
+import { faCamera, faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
 
 import { User } from '@app/_models';
 import { UserService } from '@app/user/user.service';
@@ -17,6 +18,11 @@ import { AuthenticationService } from '@app/authentication/authentication.servic
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  //icons
+  faCamera = faCamera;
+  faTrash = faTrash;
+  faSave = faSave;
 
   moment = require('moment');
 
@@ -107,8 +113,8 @@ export class HomeComponent implements OnInit {
     // }
     video: {
       facingMode: "environment",
-      // width: { min: 400, ideal: 1080 },
-      // height: { min: 640, ideal: 1920 },
+      width: { min: 400, ideal: 1080 },
+      height: { min: 640, ideal: 1920 },
       aspectRatio: { ideal: 0.5625 }
     }
   };
@@ -137,6 +143,7 @@ export class HomeComponent implements OnInit {
     if (this.section == 2) {
       this.startCamera();
     } 
+    this.isShow = true;
   }
 
   onSaveDetails() {
@@ -265,6 +272,7 @@ export class HomeComponent implements OnInit {
     this.dbService.createPhoto(this.blob, this.invoiceID).subscribe((res)=>{console.log("photo is uploaded");
     });
     this.isShow = true;
+    this.previewInfo = [];
     // for (let i = 0; i < this.captures.length; i++) {
     //   this.pictures.push(this.captures[i]);
     // }
@@ -278,6 +286,7 @@ export class HomeComponent implements OnInit {
 
   retake() {
     this.isShow = true;
+    this.previewInfo = [];
   }
 
   preview() {

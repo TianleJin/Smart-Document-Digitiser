@@ -6,10 +6,10 @@
     </a>
   </div>
   <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [ngStyle]="linkStyle">Home</a>
-      <a class="nav-item nav-link" routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin" [ngStyle]="linkStyle">Admin</a>
-      <a class="nav-item nav-link" routerLink="/track" routerLinkActive="active" [ngStyle]="linkStyle">Track</a>
-      <a class="nav-item nav-link" (click)="logout()" routerLinkActive="active" [ngStyle]="linkStyle">Logout</a>
+      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [ngStyle]="linkStyle"><fa-icon [icon]="faHome"></fa-icon>Home</a>
+      <a class="nav-item nav-link" routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin" [ngStyle]="linkStyle"><fa-icon [icon]="faCog"></fa-icon>Admin</a>
+      <a class="nav-item nav-link" routerLink="/track" routerLinkActive="active" [ngStyle]="linkStyle"><fa-icon [icon]="faTable"></fa-icon>Track</a>
+      <a class="nav-item nav-link" (click)="logout()" routerLinkActive="active" [ngStyle]="linkStyle"><fa-icon [icon]="faSignOutAlt"></fa-icon>Logout</a>
   </div>
 </nav>
 
