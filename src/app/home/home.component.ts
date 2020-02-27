@@ -162,6 +162,8 @@ export class HomeComponent implements OnInit {
         temp.push(this.valueArray[i]);
         this.pairArray.push(temp);
       }
+      console.log(this.pairArray);
+      
       this.changeSection(2);
     };
   }

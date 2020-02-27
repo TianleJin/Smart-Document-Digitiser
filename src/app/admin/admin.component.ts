@@ -27,9 +27,9 @@ export class AdminComponent implements OnInit {
 
   closeResult: string;
 
-  openSm(content) {
-    this.modalService.open(content, { size: 'sm' });
-  }
+  // openSm(content) {
+  //   this.modalService.open(content, { size: 'sm' });
+  // }
 
   popLogo(content1, content2) {
     if (this.isLogoSubmit) {
@@ -47,11 +47,16 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  popField(content1, content2) {
-    if (this.isFieldSubmit){
-      this.modalService.open(content1, { size: 'sm' });
+  popField(content) {
+    console.log("popField is called");
+    
+    if (this.isFieldSubmit) {
+      console.log("isFieldSubmit is true");
+      
+      this.modalService.open(content, { size: 'sm' });
     } else {
-      this.modalService.open(content2, { size: 'sm' });
+      console.log("isFieldSubmit is false");
+      
     }
   }
 
@@ -133,6 +138,9 @@ export class AdminComponent implements OnInit {
   get t() { return this.f.fields as FormArray; }
 
   onChangeFields(e) {
+    // if(e.target.value && e.target.value === 0) {
+    //   this.isFieldSubmit = true;
+    // }
     const numberOfFields = e.target.value || 0;
     if (this.t.length < numberOfFields) {
         for (let i = this.t.length; i < numberOfFields; i++) {
@@ -150,18 +158,24 @@ export class AdminComponent implements OnInit {
 
   onSubmitFields() {
     this.submitted = true;
-    this.isFieldSubmit = true
+    console.log(this.isFieldSubmit);
+    // console.log("onSubmitFields is called");
+    // if (this.t.length === 0) {
+    //   this.isFieldSubmit = true;
+    //   console.log(this.isFieldSubmit);
+    // } else {
+    //   this.isFieldSubmit = false;
+    // }
+    
+    //this.isFieldSubmit = false;
 
     // stop here if form is invalid
     if (this.dynamicForm.invalid) {
-      this.isFieldSubmit = false;
       return;
-    } else {
-      this.isFieldSubmit = true;
-    }
+    } 
 
     // display form values on success
-    //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.dynamicForm.value, null, 4));
+    alert("Fields have been changed");
     
     // save values on server
     this.setting.setFields(this.dynamicForm.value).subscribe((res) => console.log(res));
