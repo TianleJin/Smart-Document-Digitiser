@@ -1,11 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { SettingService } from '../setting/setting.service';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+
 import { User } from '@app/_models';
 import { UserService } from '@app/user/user.service';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 
 @Component({
@@ -27,44 +30,16 @@ export class AdminComponent implements OnInit {
 
   closeResult: string;
 
-  // openSm(content) {
-  //   this.modalService.open(content, { size: 'sm' });
-  // }
-
-  popLogo(content1, content2) {
-    if (this.isLogoSubmit) {
-      this.modalService.open(content1, { size: 'sm' });
-    } else {
-      this.modalService.open(content2, { size: 'sm' });
-    }
-  }
-
-  popColor(content1, content2) {
-    if (this.isColorSubmit) {
-      this.modalService.open(content1, { size: 'sm' });
-    } else {
-      this.modalService.open(content2, { size: 'sm' });
-    }
-  }
-
-  popField(content) {
-    console.log("popField is called");
-    
-    if (this.isFieldSubmit) {
-      console.log("isFieldSubmit is true");
-      
-      this.modalService.open(content, { size: 'sm' });
-    } else {
-      console.log("isFieldSubmit is false");
-      
-    }
-  }
+  // file path
+  private COLOR_PATH = 'assets/color/color.json';
 
   constructor(
     private userService: UserService, 
     private setting: SettingService, 
     private formBuilder: FormBuilder,
-    private modalService: NgbModal) { };
+    public ngxSmartModalService: NgxSmartModalService,
+    private http: HttpClient) { };
+    
 
   ngOnInit() {
     this.setting.currentStyle.subscribe(style => this.style = style);
@@ -103,14 +78,14 @@ export class AdminComponent implements OnInit {
     if (bgColor) {
       this.isColorSubmit = true;
     }
+   
+    console.log(this.isColorSubmit);
     const linkColor = this.linkColor(bgColor);
 
-    const newStyle = {
-        background: bgColor,
-        color: linkColor
-    }
-    console.log(newStyle);
-    this.setting.changeStyle(newStyle);
+    // const newStyle = {
+    //     background: bgColor,
+    //     color: linkColor
+    // }
 
     this.setting.setColor({
       'background': bgColor,
@@ -146,7 +121,6 @@ export class AdminComponent implements OnInit {
         for (let i = this.t.length; i < numberOfFields; i++) {
             this.t.push(this.formBuilder.group({
                 name: ['', Validators.required]
-                //email: ['', [Validators.required, Validators.email]]
             }));
         }
     } else {
@@ -154,20 +128,18 @@ export class AdminComponent implements OnInit {
             this.t.removeAt(i);
         }
     }
+      
+    if (this.t.valid) {
+      this.isFieldSubmit = true;
+    } 
+    else {
+      this.isFieldSubmit = false;
+    }
+    
   }
 
   onSubmitFields() {
     this.submitted = true;
-    console.log(this.isFieldSubmit);
-    // console.log("onSubmitFields is called");
-    // if (this.t.length === 0) {
-    //   this.isFieldSubmit = true;
-    //   console.log(this.isFieldSubmit);
-    // } else {
-    //   this.isFieldSubmit = false;
-    // }
-    
-    //this.isFieldSubmit = false;
 
     // stop here if form is invalid
     if (this.dynamicForm.invalid) {
@@ -175,7 +147,8 @@ export class AdminComponent implements OnInit {
     } 
 
     // display form values on success
-    alert("Fields have been changed");
+    //alert("Fields have been changed");
+    this.isFieldSubmit = true;
     
     // save values on server
     this.setting.setFields(this.dynamicForm.value).subscribe((res) => console.log(res));
@@ -199,5 +172,14 @@ export class AdminComponent implements OnInit {
     this.isLogoSubmit = false;
     this.isColorSubmit = false;
     this.isFieldSubmit = false;
+    this.onReset();
+  }
+
+  reloadPage(){
+    var location = window.location;
+    console.log(location.origin);
+    
+    location.assign(location.origin);
+    //location.reload();
   }
 }

@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="card-footer text-center">
-            <button class="btn btn-primary mr-1" type="submit" (click)="onSubmit()" (click)="popLogo(logoT, logoF)">Set Logo</button>
+            <button class="btn btn-primary mr-1" type="submit" (click)="onSubmit()" (click)="ngxSmartModalService.getModal('logoModal').open()">Set Logo</button>
         </div>
     </div>
     <!--Setting Color-->
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="card-footer text-center">
-            <button class="btn btn-primary mr-1" type="button" (click)="popColor(colorT, colorF)" (click)="changeBg(main.color)">Set Colour</button>
+            <button class="btn btn-primary mr-1" type="button" (click)="changeBg(main.color)" (click)="ngxSmartModalService.getModal('colorModal').open()">Set Colour</button>
         </div>
     </div>
     <!--Setting Field-->
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="card-footer text-center">
-                <button class="btn btn-primary mr-1" type="submit" (click)="popField(fieldT)" >Set Fields</button>
+                <button class="btn btn-primary mr-1" type="submit" (click)="ngxSmartModalService.getModal('fieldModal').open()">Set Fields</button>
                 <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
                 <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
             </div>
@@ -103,98 +103,45 @@
 
 
 <!--POP UP-->
-<!--Successfully change logo-->
-<ng-template #logoT let-modal>
-    <!-- <div class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div> -->
-    <div class="modal-body">
-      <h4>Logo has been changed!</h4>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-    </div>
-</ng-template>
+<!--Logo POP-->
+<ngx-smart-modal #logoModal identifier="logoModal">
+  <div *ngIf="isLogoSubmit">
+    <h3>Logo has been changed!</h3><br>
+  </div>
+  <div *ngIf="!isLogoSubmit">
+    <h3>Choose a logo!</h3>
+  </div>
+  <button class="button -dark" (click)="reloadPage()">Reload page</button>
+</ngx-smart-modal>
 
-<!--Unsuccessfully change logo-->
-<ng-template #logoF let-modal>
-    <!-- <div class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div> -->
-    <div class="modal-body">
-      <h4>Choose a logo image!</h4>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-    </div>
-</ng-template>
+<!--Color POP-->
+<ngx-smart-modal #colorModal identifier="colorModal">
+  <div *ngIf="isColorSubmit">
+    <h3>Color has been changed!</h3><br>
+  </div>
+  <div *ngIf="!isColorSubmit">
+    <h3>Choose a color!</h3>
+  </div>
+  <!-- <button class="button -dark" (click)="colorModal.close()">Close</button> -->
+  <button class="button -dark" (click)="reloadPage()">Reload page</button>
+</ngx-smart-modal>
 
-<!--Successfully change color-->
-<ng-template #colorT let-modal>
-    <!-- <div class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div> -->
-    <div class="modal-body">
-      <h4>Color has been changed!</h4>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-    </div>
-</ng-template>
+<!--Field POP-->
+<ngx-smart-modal #fieldModal identifier="fieldModal">
+  <div *ngIf="isFieldSubmit">
+    <h3>Fields have been changed!</h3><br>
+  </div>
+  <div *ngIf="!isFieldSubmit">
+    <h3>Fields are required!</h3>
+  </div>
+  <button class="button -dark" (click)="reloadPage()">Reload page</button>
+</ngx-smart-modal>
 
-<!--Unsuccessfully change color-->
-<ng-template #colorF let-modal>
-    <!-- <div class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div> -->
-    <div class="modal-body">
-      <h4>Choose a color!</h4>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-    </div>
-</ng-template>
 
-  <!--Successfully change field-->
-<ng-template #fieldT let-modal>
-    <!-- <div class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div> -->
-    <div class="modal-body">
-      <h4>Fields have been changed!</h4>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-    </div>
-</ng-template>
-<!--Unsuccessfully change field-->
-<ng-template #fieldF let-modal>
-    <!-- <div class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div> -->
-    <div class="modal-body">
-      <h4>Fields are required!</h4>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-    </div>
-</ng-template>
+
+
+
+
+
+
 
