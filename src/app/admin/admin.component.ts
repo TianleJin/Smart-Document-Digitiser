@@ -21,11 +21,38 @@ export class AdminComponent implements OnInit {
   style;
   images;
   section;
+  isLogoSubmit = false;
+  isColorSubmit = false;
+  isFieldSubmit = false;
 
   closeResult: string;
 
   openSm(content) {
     this.modalService.open(content, { size: 'sm' });
+  }
+
+  popLogo(content1, content2) {
+    if (this.isLogoSubmit) {
+      this.modalService.open(content1, { size: 'sm' });
+    } else {
+      this.modalService.open(content2, { size: 'sm' });
+    }
+  }
+
+  popColor(content1, content2) {
+    if (this.isColorSubmit) {
+      this.modalService.open(content1, { size: 'sm' });
+    } else {
+      this.modalService.open(content2, { size: 'sm' });
+    }
+  }
+
+  popField(content1, content2) {
+    if (this.isFieldSubmit){
+      this.modalService.open(content1, { size: 'sm' });
+    } else {
+      this.modalService.open(content2, { size: 'sm' });
+    }
   }
 
   constructor(
@@ -53,6 +80,7 @@ export class AdminComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.images = file;
+      this.isLogoSubmit = true;
     }
   }
 
@@ -67,6 +95,9 @@ export class AdminComponent implements OnInit {
   }
 
   changeBg(bgColor) {
+    if (bgColor) {
+      this.isColorSubmit = true;
+    }
     const linkColor = this.linkColor(bgColor);
 
     const newStyle = {
@@ -119,10 +150,14 @@ export class AdminComponent implements OnInit {
 
   onSubmitFields() {
     this.submitted = true;
+    this.isFieldSubmit = true
 
     // stop here if form is invalid
     if (this.dynamicForm.invalid) {
-        return;
+      this.isFieldSubmit = false;
+      return;
+    } else {
+      this.isFieldSubmit = true;
     }
 
     // display form values on success
@@ -147,5 +182,8 @@ export class AdminComponent implements OnInit {
 
   changeSection(section){
     this.section = section;
+    this.isLogoSubmit = false;
+    this.isColorSubmit = false;
+    this.isFieldSubmit = false;
   }
 }

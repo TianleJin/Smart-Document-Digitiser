@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="card-footer text-center">
-            <button class="btn btn-primary mr-1" type="submit" (click)="onSubmit()" (click)="openSm(content)">Set Logo</button>
+            <button class="btn btn-primary mr-1" type="submit" (click)="onSubmit()" (click)="popLogo(logoT, logoF)">Set Logo</button>
         </div>
     </div>
     <!--Setting Color-->
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="card-footer text-center">
-            <button class="btn btn-primary mr-1" type="button" (click)="openSm(content)">Set Colour</button>
+            <button class="btn btn-primary mr-1" type="button" (click)="popColor(colorT, colorF)" (click)="changeBg(main.color)">Set Colour</button>
         </div>
     </div>
     <!--Setting Field-->
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="card-footer text-center">
-                <button class="btn btn-primary mr-1" type="submit" (click)="openSm(content)">Set Fields</button>
+                <button class="btn btn-primary mr-1" type="submit" (click)="popField(fieldT, fieldF)" >Set Fields</button>
                 <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
                 <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
             </div>
@@ -103,18 +103,98 @@
 
 
 <!--POP UP-->
-<ng-template #content let-modal>
-    <div class="modal-header">
+<!--Successfully change logo-->
+<ng-template #logoT let-modal>
+    <!-- <div class="modal-header">
       <h4 class="modal-title">Modal title</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
-    </div>
+    </div> -->
     <div class="modal-body">
-      <p>One fine body&hellip;</p>
+      <h4>Logo has been changed!</h4>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
     </div>
-  </ng-template>
+</ng-template>
+
+<!--Unsuccessfully change logo-->
+<ng-template #logoF let-modal>
+    <!-- <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> -->
+    <div class="modal-body">
+      <h4>Choose a logo image!</h4>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+
+<!--Successfully change color-->
+<ng-template #colorT let-modal>
+    <!-- <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> -->
+    <div class="modal-body">
+      <h4>Color has been changed!</h4>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+
+<!--Unsuccessfully change color-->
+<ng-template #colorF let-modal>
+    <!-- <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> -->
+    <div class="modal-body">
+      <h4>Choose a color!</h4>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+
+  <!--Successfully change field-->
+<ng-template #fieldT let-modal>
+    <!-- <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> -->
+    <div class="modal-body">
+      <h4>Fields have been changed!</h4>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+<!--Unsuccessfully change field-->
+<ng-template #fieldF let-modal>
+    <!-- <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> -->
+    <div class="modal-body">
+      <h4>Fields are required!</h4>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
 
