@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 
 // used to create fake backend
@@ -29,7 +30,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AdminComponent,
     LoginComponent,
     TrackComponent,
-    //NgbdModalConfirm
   ],
   imports: [
     BrowserModule,
@@ -39,7 +39,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ColorPickerModule,
     NgbModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType:'danger'
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

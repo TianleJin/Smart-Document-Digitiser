@@ -20,7 +20,16 @@
             <td>{{object.status}}</td>
             <td><button class="btn btn-primary" type="button" (click)="object.isCollapsed = !object.isCollapsed"
                 [attr.aria-expanded]="!object.isCollapsed" aria-controls="comments">Show</button></td>
-            <td><button class="btn btn-danger" type="button" (click)="deleteRecord(object.invoiceID)">Delete</button></td>
+            <!-- <td><button class="btn btn-danger" type="button" (click)="deleteRecord(object.invoiceID)">Delete</button></td> -->
+            <td>
+                <button class="btn btn-danger"
+                mwlConfirmationPopover
+                [popoverTitle]="popoverTitle"
+                [popoverMessage]="popoverMessage"
+                placement="left"
+                (confirm)="deleteRecord(object.invoiceID)"
+                (cancel)="cancelClicked=true">Delete</button>
+            </td>
         </tr>
         <tr>
             <td colspan="7" id="comments" [ngbCollapse]="object.isCollapsed">

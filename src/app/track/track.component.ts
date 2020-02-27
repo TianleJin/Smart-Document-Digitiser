@@ -20,6 +20,11 @@ export class TrackComponent implements OnInit {
   numberOfField;
   fieldJSON;
 
+  popoverTitle: string = "Record Delete Confirmation";
+  popoverMessage: string = "Do you want to delete?";
+  confirmClicked: boolean = false;
+  cancelClicked: boolean = false;
+
   private FIELD_PATH = 'assets/field/field.json';
 
   
