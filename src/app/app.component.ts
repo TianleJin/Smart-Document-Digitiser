@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from './authentication/authentication.service';
 import { User, Role } from './_models';
-import { SettingService } from './setting/setting.service';
 import { faHome, faCog, faTable, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { log } from 'util';
 

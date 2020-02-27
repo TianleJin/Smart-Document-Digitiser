@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
-
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -42,7 +42,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType:'danger'
-    })
+    }),
+    NgxSmartModalModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -2,7 +2,7 @@ import { DatabaseService } from '../database/database.service';
 import { Component, OnInit } from '@angular/core';
 //import fieldsJSON from "../../assets/field/field.json"
 import { HttpClient } from '@angular/common/http';
-import { SettingService } from '../setting/setting.service';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-track',
@@ -11,7 +11,7 @@ import { SettingService } from '../setting/setting.service';
 })
 export class TrackComponent implements OnInit {
 
-  constructor(private dbService: DatabaseService, private http:HttpClient, private setting: SettingService) { }
+  constructor(private dbService: DatabaseService, private http:HttpClient, public ngxSmartModalService: NgxSmartModalService) { }
 
   recordsDB: any[] = [];
   outputDB: any[] = [];
@@ -42,9 +42,6 @@ export class TrackComponent implements OnInit {
         //   obj['pictures'] = data;
         // })
         obj["isCollapsed"] = true;
-        //var copy = Object.assign({}, obj["extra"]);
-        //console.log("copy");
-        //console.log(copy);
         obj["array"] = [];
         for (let i = 0; i < this.numberOfField; i ++) {
           if (obj["extra"][this.extraFields[i]]) {
