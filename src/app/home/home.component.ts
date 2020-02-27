@@ -9,7 +9,41 @@ import { faCamera, faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
 
 import { User } from '@app/_models';
 import { UserService } from '@app/user/user.service';
-import { AuthenticationService } from '@app/authentication/authentication.service'
+import { AuthenticationService } from '@app/authentication/authentication.service';
+
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+//pop up component
+
+@Component({
+  selector: 'ngbd-modal-confirm',
+  template: `
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Profile deletion</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Are you sure you want to delete <span class="text-primary">"John Doe"</span> profile?</strong></p>
+    <p>All information associated to this user profile will be permanently deleted.
+    <span class="text-danger">This operation can not be undone.</span>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
+  </div>
+  `
+})
+export class NgbdModalConfirm {
+  constructor(public modal: NgbActiveModal) {}
+}
+
+const MODALS = {
+  focusFirst: NgbdModalConfirm
+};
+
 
 @Component({
   selector: 'app-home',
@@ -62,13 +96,17 @@ export class HomeComponent implements OnInit {
 
   private FIELD_PATH = "assets/field/field.json";
 
+  withAutofocus = `<button type="button" ngbAutofocus class="btn btn-danger"
+      (click)="modal.close('Ok click')">Ok</button>`;
+
   constructor(
       private userService: UserService,
       private authenticationService: AuthenticationService,
       private renderer: Renderer2, 
       private dbService: DatabaseService, 
       private http: HttpClient, 
-      private photo: PhotoService
+      private photo: PhotoService,
+      private _modalService: NgbModal
   ) {
       this.currentUser = this.authenticationService.currentUserValue;
   }
@@ -325,5 +363,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
+  open(name: string) {
+    this._modalService.open(MODALS[name]);
+  }
 }

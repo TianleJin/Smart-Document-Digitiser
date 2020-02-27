@@ -22,13 +22,18 @@ import { SettingService } from './settingservice/setting.service';
 import { DatabaseService } from './database/database.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import {
+  NgbdModalConfirm
+} from './home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AdminComponent,
     LoginComponent,
-    TrackComponent
+    TrackComponent,
+    //NgbdModalConfirm
   ],
   imports: [
     BrowserModule,
@@ -51,5 +56,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PhotoService
   ],
   bootstrap: [AppComponent]
+  //entryComponents: [NgbdModalConfirm]
 })
 export class AppModule { }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { SettingService } from '../setting/setting.service';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { User } from '@app/_models';
 import { UserService } from '@app/user/user.service';
@@ -10,6 +11,7 @@ import { UserService } from '@app/user/user.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
@@ -20,7 +22,17 @@ export class AdminComponent implements OnInit {
   images;
   section;
 
-  constructor(private userService: UserService, private setting: SettingService, private formBuilder: FormBuilder) { }
+  closeResult: string;
+
+  openSm(content) {
+    this.modalService.open(content, { size: 'sm' });
+  }
+
+  constructor(
+    private userService: UserService, 
+    private setting: SettingService, 
+    private formBuilder: FormBuilder,
+    private modalService: NgbModal) { };
 
   ngOnInit() {
     this.setting.currentStyle.subscribe(style => this.style = style);
