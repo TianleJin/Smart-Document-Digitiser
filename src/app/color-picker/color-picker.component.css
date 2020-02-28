@@ -21,12 +21,16 @@
     height: 32px;
     border-radius: 50%;
     border: 1px solid rgb(220, 220, 220);
+    position: relative;
+    right: 10%;
   }
   
   .text {
     flex: 1;
     font-family: 'Helvetica';
     line-height: 32px;
+    position: relative;
+    left: 10%;
   }
 
   @media screen and (max-width: 600px) {
@@ -35,8 +39,26 @@
       width: 100%;
       padding: 0px;
     }
+
     .color-wrapper {
       display: flex;
       height: 100%;
+    }
+
+    .text {
+      flex: 1;
+      font-family: 'Helvetica';
+      line-height: 32px;
+      position: relative;
+      left: 0%;
+    }
+
+    .color-div {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgb(220, 220, 220);
+      position: relative;
+      right: 0%;
     }
   }
