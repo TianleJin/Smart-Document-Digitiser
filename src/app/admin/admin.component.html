@@ -28,8 +28,8 @@
     <!--Setting Logo-->
     <div class="card m-3" *ngIf="section==1">
         <h5 class="card-header">Customize Logo</h5>
-        <div class="card-body">
-                <input type="file" name="image" (change)="selectImage($event)"/>
+        <div id="logo-card" class="card-body text-center">
+                <input id="logo-input" type="file" name="image" (change)="selectImage($event)"/>
         </div>
         <div class="card-footer text-center">
             <button class="btn btn-primary mr-1" type="submit" (click)="onSubmit()" (click)="ngxSmartModalService.getModal('logoModal').open()">Set Logo</button>

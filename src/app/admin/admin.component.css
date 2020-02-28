@@ -1,0 +1,14 @@
+
+
+@media screen and (max-width: 600px) {
+    #logo-card {
+        text-align:left;
+    }
+
+    #logo-input {
+        width: 100%;
+    }
+}
+
+
+
