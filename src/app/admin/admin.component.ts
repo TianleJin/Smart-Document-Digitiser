@@ -60,7 +60,9 @@ export class AdminComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.images = file;
-      this.isLogoSubmit = true;
+      if (this.images.type.includes('png') || this.images.type.includes('jpeg') || this.images.type.includes('jpg')) {
+        this.isLogoSubmit = true;
+      } 
     }
   }
 

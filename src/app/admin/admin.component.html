@@ -29,15 +29,7 @@
     <div class="card m-3" *ngIf="section==1">
         <h5 class="card-header">Customize Logo</h5>
         <div class="card-body">
-            <div class="container">
-                <div style="text-align: center">
-                    <div>
-                        <input type="file" name="image" (change)="selectImage($event)"/>
-                        <!-- <br><br><br>
-                        <img src="../assets/img/logo.png" alt="Logo" width="120" height="120"> -->
-                    </div>
-                </div>
-            </div>
+                <input type="file" name="image" (change)="selectImage($event)"/>
         </div>
         <div class="card-footer text-center">
             <button class="btn btn-primary mr-1" type="submit" (click)="onSubmit()" (click)="ngxSmartModalService.getModal('logoModal').open()">Set Logo</button>
@@ -48,7 +40,6 @@
         <h5 class="card-header">Customize Color</h5>
         <div class="card-body">
                         <app-color-picker #main></app-color-picker>
-                        <!-- <button type="button" class="btn btn-outline-primary" (click)="changeBg()">Change Colour</button> -->
         </div>
         <div class="card-footer text-center">
             <button class="btn btn-primary mr-1" type="button" (click)="changeBg(main.color)" (click)="ngxSmartModalService.getModal('colorModal').open()">Set Colour</button>
