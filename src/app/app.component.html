@@ -2,12 +2,12 @@
 <nav class="navbar navbar-expand" *ngIf="currentUser" [ngStyle]="mainStyle">
   <div class="navbar-brand">
     <a class="nav-item">
-      <img src="../assets/img/logo.png" alt="Logo" width="60" height="60">
+      <img id="logo-image" src="../assets/img/logo.png" alt="Logo" width="45" height="45">
     </a>
   </div>
   <div class="navbar-nav">
       <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [ngStyle]="linkStyle"><fa-icon [icon]="faHome"></fa-icon>Home</a>
-      <a class="nav-item nav-link" routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin" [ngStyle]="linkStyle"><fa-icon [icon]="faCog"></fa-icon>Admin</a>
+      <a class="nav-item nav-link" routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin" [ngStyle]="linkStyle" ><fa-icon [icon]="faCog"></fa-icon>Admin</a>
       <a class="nav-item nav-link" routerLink="/track" routerLinkActive="active" [ngStyle]="linkStyle"><fa-icon [icon]="faTable"></fa-icon>Track</a>
       <a class="nav-item nav-link" (click)="logout()" routerLinkActive="active" [ngStyle]="linkStyle"><fa-icon [icon]="faSignOutAlt"></fa-icon>Logout</a>
   </div>
