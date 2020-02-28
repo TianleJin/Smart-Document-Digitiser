@@ -28,3 +28,15 @@
     font-family: 'Helvetica';
     line-height: 32px;
   }
+
+  @media screen and (max-width: 600px) {
+    :host {
+      display: block;
+      width: 100%;
+      padding: 0px;
+    }
+    .color-wrapper {
+      display: flex;
+      height: 100%;
+    }
+  }

@@ -47,14 +47,8 @@
     <div class="card m-3" *ngIf="section==2">
         <h5 class="card-header">Customize Color</h5>
         <div class="card-body">
-            <div class="container">
-                <div class="row">
-                    <div class="card-body">
                         <app-color-picker #main></app-color-picker>
                         <!-- <button type="button" class="btn btn-outline-primary" (click)="changeBg()">Change Colour</button> -->
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="card-footer text-center">
             <button class="btn btn-primary mr-1" type="button" (click)="changeBg(main.color)" (click)="ngxSmartModalService.getModal('colorModal').open()">Set Colour</button>
