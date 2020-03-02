@@ -109,11 +109,11 @@
                         </tr>
                     </table>
                 </div>
-                <!-- <ul>
-                <li *ngFor="let p of pictures">
-                    <img src="{{ p }}" height="100" />
-                </li>
-                </ul> -->
+                <ul>
+                    <li *ngFor="let p of captures">
+                        <img width="16" height="16" alt="star" src="{{ p }}"/>
+                    </li>
+                </ul>
                 <div class="row">
                     <button class="btn btn-danger" (click)="changeSection(2)">Back</button>
                     <div class="divider"></div>

@@ -1,3 +1,4 @@
+import { log } from 'util';
 import { first } from 'rxjs/operators';
 import { DatabaseService } from '../database/database.service';
 import { PhotoService } from '../photoservice/photo.service';
@@ -45,6 +46,7 @@ export class HomeComponent implements OnInit {
   pictures: Array<String> = [];
   image;
   canvasElement;
+  captures: Array<any> = [];
   isShow = true;
   fieldJSON;
   numberOfField;
@@ -89,8 +91,8 @@ export class HomeComponent implements OnInit {
     this.getFields();
     this.photo.getJwt().subscribe((data) => {
       this.jwt = data;
-      console.log(data);
-      console.log(typeof(data));
+      //console.log(data);
+      //console.log(typeof(data));
     });
   }
 
@@ -165,8 +167,6 @@ export class HomeComponent implements OnInit {
         temp.push(this.valueArray[i]);
         this.pairArray.push(temp);
       }
-      console.log(this.pairArray);
-      
       this.changeSection(2);
     };
   }
@@ -207,13 +207,14 @@ export class HomeComponent implements OnInit {
     this.canvas.nativeElement.getContext('2d').drawImage(this.videoElement.nativeElement, 0, 0);
     this.renderer.setProperty(this.videoElement.nativeElement, 'display', "none");
     this.picture = this.canvas.nativeElement.toDataURL("image/png");
-    //console.log(this.picture);
+    console.log(this.picture);
+    
     this.isShow = false;
     this.blob = this.dataURLtoBlob(this.picture);
-    console.log(this.blob);
+    // console.log(this.blob);
     //var blob = this.dataURLtoBlob(this.picture);
     this.uploadImg(this.blob, this.jwt, this.template_name, this.document_name);  
-    //this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
+    //this.captures.push(this.picture);
     // console.log(this.canvas.nativeElement.toDataURL("image/png"));
     // console.log(typeof(this.canvas.nativeElement.toDataURL("image/png")));  
     // console.log(this.captures);
@@ -279,6 +280,7 @@ export class HomeComponent implements OnInit {
 
   storePictures(){
     this.pictures.push(this.blob);
+    this.captures.push(this.picture);
     this.dbService.createPhoto(this.blob, this.invoiceID).subscribe((res)=>{console.log("photo is uploaded");
     });
     this.isShow = true;
