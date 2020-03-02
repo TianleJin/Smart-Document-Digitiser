@@ -32,6 +32,7 @@ export class TrackComponent implements OnInit {
   private FIELD_PATH = 'assets/field/field.json';
 
   searchText: string;
+  page: number=1;
 
   
   ngOnInit() {

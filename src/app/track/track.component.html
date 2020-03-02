@@ -10,7 +10,7 @@
         <div class="table-responsive">
             <table class="table table-small-font table-bordered table-striped">
                 <thead>
-                    <tr class='bg-warning'>
+                    <tr class='bg-info'>
                         <th>Invoice ID</th>
                         <th>Recording Date</th>
                         <th *ngFor="let field of extraFields">{{field}}</th>
@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let object of recordsDB | filter:searchText; let i = index">
+                    <tr *ngFor="let object of recordsDB | filter:searchText | paginate: { itemsPerPage: 5, currentPage: page}; let i = index">
                         <td>{{object.invoiceID}}</td>
                         <td>{{object.recordDate}}</td>
                         <td *ngFor="let item of object['array']">{{item}}</td>
@@ -62,6 +62,7 @@
                         </td>
                     </tr> -->
                 </tbody>
+                <pagination-controls (pageChange)="page=$event"></pagination-controls>
             </table>
          </div>
     </div>
