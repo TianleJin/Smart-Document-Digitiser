@@ -320,6 +320,16 @@ export class HomeComponent implements OnInit {
               j++;
             }
           } 
+          if ("Unmapped" in page && page["Unmapped"] != undefined) {
+            const fieldsData = page["Unmapped"]["Fields"];
+            console.log("fieldData");
+            let j = 0;
+            while (j in fieldsData) {
+              let text = fieldsData[j]["field_" + j]["field_value"];
+              this.previewInfo.push(text);
+              j++;
+            }
+          }
           i++;
         }
       }

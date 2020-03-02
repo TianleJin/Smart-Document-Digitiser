@@ -6,14 +6,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PhotoService {
   // Url of API
-  jwtUrl: string = "https://10.64.17.71:9991/api/Authenticator/authenticate_users";
-  uploadUrl: string = "https://10.64.17.71:9991/api/UU/process_document";
-  infoUrl: string = "https://10.64.17.71:9991/api/Fetch/get_document_data";
+  jwtUrl: string = "https://niaieservices.us.evoncloud.com/api/Authenticator/authenticate_users";
+  uploadUrl: string = "https://niaieservices.us.evoncloud.com/api/UU/process_document";
+  infoUrl: string = "https://niaieservices.us.evoncloud.com/api/Fetch/get_document_data";
   
   // Username and password
   loginInfo: Object = {
-    "username": "aus_test_user",
-    "password": "!abcd@1234$"
+    "username": "user",
+    "password": "user"
   };
   
   constructor(private http: HttpClient) { }
