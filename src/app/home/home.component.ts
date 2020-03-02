@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { TimeoutError, fromEventPattern, NEVER } from 'rxjs';
 import  DummyData from '../photoservice/sample.json';
 import { faCamera, faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 import { User } from '@app/_models';
 import { UserService } from '@app/user/user.service';
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit {
   recordDate: String = "";
   status: String;
   comments: String;
+  inputAlert: String = "fdasfsdfs";
 
   picture: String;
   blob;
@@ -72,7 +74,8 @@ export class HomeComponent implements OnInit {
       private renderer: Renderer2, 
       private dbService: DatabaseService, 
       private http: HttpClient, 
-      private photo: PhotoService
+      private photo: PhotoService,
+      public ngxSmartModalService: NgxSmartModalService,
   ) {
       this.currentUser = this.authenticationService.currentUserValue;
   }
@@ -259,14 +262,15 @@ export class HomeComponent implements OnInit {
     }
     return new Blob([u8arr], {type:mime});
   }
+
   validateFrom() {
     if (this.invoiceID === "") {
-      alert("Invoice ID must be provided!");
+      this.inputAlert = "Invoice ID must be provided!";
       return false;
     }
     for (let i = 0; i < this.valueArray.length; i++) {
       if (this.valueArray[i] === "") {
-        alert(this.fieldArray[i] + " must be provided!");
+        this.inputAlert = this.fieldArray[i] + " must be provided!";
         return false;
       }
     }

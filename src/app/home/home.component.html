@@ -37,7 +37,7 @@
             <hr>
             <button type="button" class="btn btn-warning" (click)="clearDetails()">Clear</button>
             <div class="divider"></div>
-            <button type="button" class="btn btn-primary" (click)="onSaveDetails()">Save Details</button>
+            <button type="button" class="btn btn-primary" (click)="onSaveDetails()" (click)="ngxSmartModalService.getModal('inputModal').open()">Save Details</button>
     </div>
     <!--STEP2-->
     <div class="section" *ngIf="section==2">
@@ -131,3 +131,10 @@
     </div>
     </div>
 </div>
+
+<!--Input POP-->
+<ngx-smart-modal #inputModal identifier="inputModal">
+    <div *ngIf="!validateFrom()">
+      <p>{{inputAlert}}</p>
+    </div>
+  </ngx-smart-modal>

@@ -91,11 +91,11 @@
 <!--Logo POP-->
 <ngx-smart-modal #logoModal identifier="logoModal">
   <div *ngIf="isLogoSubmit">
-    <h3>Logo has been changed!</h3><br>
+    <p>Logo has been changed!</p><br>
     <button class="button -dark" (click)="reloadPage()">Reload page</button>
   </div>
   <div *ngIf="!isLogoSubmit">
-    <h3>Choose a logo!</h3>
+    <p>Choose a logo!</p>
   </div>
   <!-- <button class="button -dark" (click)="reloadPage()">Reload page</button> -->
 </ngx-smart-modal>
@@ -103,11 +103,11 @@
 <!--Color POP-->
 <ngx-smart-modal #colorModal identifier="colorModal">
   <div *ngIf="isColorSubmit">
-    <h3>Color has been changed!</h3><br>
+    <p>Color has been changed!</p><br>
     <button class="button -dark" (click)="reloadPage()">Reload page</button>
   </div>
   <div *ngIf="!isColorSubmit">
-    <h3>Choose a color!</h3>
+    <p>Choose a color!</p>
   </div>
   <!-- <button class="button -dark" (click)="colorModal.close()">Close</button> -->
   <!-- <button class="button -dark" (click)="reloadPage()">Reload page</button> -->
@@ -116,11 +116,11 @@
 <!--Field POP-->
 <ngx-smart-modal #fieldModal identifier="fieldModal">
   <div *ngIf="isFieldSubmit">
-    <h3>Fields have been changed!</h3><br>
+    <p>Fields have been changed!</p><br>
     <button class="button -dark" (click)="reloadPage()">Reload page</button>
   </div>
   <div *ngIf="!isFieldSubmit">
-    <h3>Fields are required!</h3>
+    <p>Fields are required!</p>
   </div>
   <!-- <button class="button -dark" (click)="reloadPage()">Reload page</button> -->
 </ngx-smart-modal>
