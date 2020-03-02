@@ -12,123 +12,122 @@
     </div>
 </div> -->
 
-<div>
+<div class="container">
     <div>
         <br>
-        <h1 class="container">New Invoice</h1>
+        <h1>New Invoice</h1>
     </div>
     <hr>
     <!--Tab Content-->
-    <!--STEP1-->
     <div class="container">
-    <div class="section" *ngIf="section==1" >
-        <!-- <div class="col-12" style="background-color: blueviolet;">
-            <h3>Details</h3>
-        </div> -->
-            <div class="form-group" >
-                <label for="invoiceID">Invoice ID</label>
-                <input type="text" class="form-control" id="invoiceID" [(ngModel)]="invoiceID">
-                <small id="dateHelp" class="form-text text-muted">Current date will be recorded as Recording Date</small>
+        <!--STEP1-->
+        <div class="section" *ngIf="section==1" >
+            <div class="container">
+                <div class="form-group" >
+                    <label for="invoiceID">Invoice ID</label>
+                    <input type="text" class="form-control" id="invoiceID" [(ngModel)]="invoiceID">
+                    <small id="dateHelp" class="form-text text-muted">Current date will be recorded as Recording Date</small>
+                </div>
+                <div class="form-group" *ngFor="let field of fieldArray; let i = index;">
+                    <label for="i">{{field}}</label>
+                    <input type="text" class="form-control" id="i" [(ngModel)]="valueArray[i]">
+                </div>
+                <hr>
+                <button type="button" class="btn btn-warning" (click)="clearDetails()">Clear</button>
+                <div class="divider"></div>
+                <button type="button" class="btn btn-primary" (click)="onSaveDetails()" (click)="ngxSmartModalService.getModal('inputModal').open()">Save Details</button>
             </div>
-            <div class="form-group" *ngFor="let field of fieldArray; let i = index;">
-                <label for="i">{{field}}</label>
-                <input type="text" class="form-control" id="i" [(ngModel)]="valueArray[i]">
-            </div>
-            <hr>
-            <button type="button" class="btn btn-warning" (click)="clearDetails()">Clear</button>
-            <div class="divider"></div>
-            <button type="button" class="btn btn-primary" (click)="onSaveDetails()" (click)="ngxSmartModalService.getModal('inputModal').open()">Save Details</button>
-    </div>
-    <!--STEP2-->
-    <div class="section" *ngIf="section==2">
-        <div class="container">
-            <div class="row justify-content-between">
-                <button class="btn btn-danger" (click)="changeSection(1)">Back</button>
-                <button class="btn btn-primary" (click)="changeSection(3); retake()">Next</button>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-12 col-md-6 camera-box">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <h3>Camera</h3>
-                        </div>
-                        <br>
-                        <div class="row justify-content-center">
-                            <div class="col-10">
-                                <video #video class="vid" autoplay [hidden]="!isShow"></video>
-                                <canvas #canvas class="vid" [hidden]="isShow"></canvas>
+        </div>
+        <!--STEP2-->
+        <div class="section" *ngIf="section==2">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <button class="btn btn-danger" (click)="changeSection(1)">Back</button>
+                    <button class="btn btn-primary" (click)="changeSection(3); retake()">Next</button>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12 col-md-6 camera-box">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <h3>Camera</h3>
+                            </div>
+                            <br>
+                            <div class="row justify-content-center">
+                                <div class="col-10">
+                                    <video #video class="vid" autoplay [hidden]="!isShow"></video>
+                                    <canvas #canvas class="vid" [hidden]="isShow"></canvas>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row justify-content-center">
+                                <button type="button" class="btn btn-primary" (click)="capture()" [hidden]="!isShow"><fa-icon [icon]="faCamera"></fa-icon></button>
+                                <button type="button" class="btn btn-danger" (click)="retake()" [hidden]="isShow"><fa-icon [icon]="faTrash"></fa-icon>Redo</button>
+                                <div class="divider"></div>
+                                <button type="button" class="btn btn-primary" (click)="storePictures()" [hidden]="isShow"><fa-icon [icon]="faSave"></fa-icon>Save</button>
                             </div>
                         </div>
-                        <br>
-                        <div class="row justify-content-center">
-                            <button type="button" class="btn btn-primary" (click)="capture()" [hidden]="!isShow"><fa-icon [icon]="faCamera"></fa-icon></button>
-                            <button type="button" class="btn btn-danger" (click)="retake()" [hidden]="isShow"><fa-icon [icon]="faTrash"></fa-icon>Redo</button>
-                            <div class="divider"></div>
-                            <button type="button" class="btn btn-primary" (click)="storePictures()" [hidden]="isShow"><fa-icon [icon]="faSave"></fa-icon>Save</button>
-                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 preview-box">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <h3>Preview</h3>
-                        </div>
-                        <br>
-                        <div class="row justify-content-center" style="text-align:center">
-                            <ul class="list-group list-group-vertical-md">
-                                <li class="list-group-item" *ngFor="let field of previewInfo">
-                                    {{field}}
-                                </li>
-                            </ul>
+                    <div class="col-12 col-md-6 preview-box">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <h3>Preview</h3>
+                            </div>
+                            <br>
+                            <div class="row justify-content-center" style="text-align:center">
+                                <ul class="list-group list-group-vertical-md">
+                                    <li class="list-group-item" *ngFor="let field of previewInfo">
+                                        {{field}}
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--STEP3-->
-    <div class="section" *ngIf="section==3">
-        <div class="container">
-            <div class="row">
-                <h3>Review</h3>
-            </div>
-            <br>
-            <div class="row">
-                <table class="table table-striped">
-                    <tr>
-                        <td>Invoice ID</td>
-                        <td>{{invoiceID}}</td>
-                    </tr>
-                    <tr>
-                        <td>Recording Date</td>
-                        <td>{{recordDate}}</td>
-                    </tr> 
-                    <tr *ngFor="let pair of pairArray">
-                        <td>{{pair[0]}}</td>
-                        <td>{{pair[1]}}</td>
-                    </tr>
-                </table>
-            </div>
-            <!-- <ul>
-            <li *ngFor="let p of pictures">
-                <img src="{{ p }}" height="100" />
-            </li>
-            </ul> -->
-            <div class="row">
-                <button class="btn btn-danger" (click)="changeSection(2)">Back</button>
-                <div class="divider"></div>
-                <button class="btn btn-primary" (click)="onSaveRecord()">Submit</button>
+        <!--STEP3-->
+        <div class="section" *ngIf="section==3">
+            <div class="container">
+                <div class="row">
+                    <h3>Review</h3>
+                </div>
+                <br>
+                <div class="row">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Invoice ID</td>
+                            <td>{{invoiceID}}</td>
+                        </tr>
+                        <tr>
+                            <td>Recording Date</td>
+                            <td>{{recordDate}}</td>
+                        </tr> 
+                        <tr *ngFor="let pair of pairArray">
+                            <td>{{pair[0]}}</td>
+                            <td>{{pair[1]}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- <ul>
+                <li *ngFor="let p of pictures">
+                    <img src="{{ p }}" height="100" />
+                </li>
+                </ul> -->
+                <div class="row">
+                    <button class="btn btn-danger" (click)="changeSection(2)">Back</button>
+                    <div class="divider"></div>
+                    <button class="btn btn-primary" (click)="onSaveRecord()">Submit</button>
+                </div>
             </div>
         </div>
-    </div>
-    <!--Upload Feedback-->
-    <div class="section" *ngIf="section==4">
-        <h3>Your record has been uploaded.</h3><br>
-        <button type="button" class="btn btn-primary" (click)="clearDetails(); changeSection(1)">Home</button>
-        <div class="divider"></div>
-        <button type="button" class="btn btn-primary" routerLink="/track" routerLinkActive="active">Tracking</button>
-    </div>
+        <!--Upload Feedback-->
+        <div class="section" *ngIf="section==4">
+            <h3>Your record has been uploaded.</h3><br>
+            <button type="button" class="btn btn-primary" (click)="clearDetails(); changeSection(1)">Home</button>
+            <div class="divider"></div>
+            <button type="button" class="btn btn-primary" routerLink="/track" routerLinkActive="active">Tracking</button>
+        </div>
     </div>
 </div>
 

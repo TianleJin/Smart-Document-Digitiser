@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 //import fieldsJSON from "../../assets/field/field.json"
 import { HttpClient } from '@angular/common/http';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-track',
@@ -12,6 +13,9 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 export class TrackComponent implements OnInit {
 
   constructor(private dbService: DatabaseService, private http:HttpClient, public ngxSmartModalService: NgxSmartModalService) { }
+
+  // icons
+  faSearch = faSearch;
 
   recordsDB: any[] = [];
   outputDB: any[] = [];
@@ -26,6 +30,8 @@ export class TrackComponent implements OnInit {
   cancelClicked: boolean = false;
 
   private FIELD_PATH = 'assets/field/field.json';
+
+  searchText: string;
 
   
   ngOnInit() {

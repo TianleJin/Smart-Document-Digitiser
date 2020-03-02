@@ -6,6 +6,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -21,7 +23,7 @@ import { ColorPickerModule } from './color-picker/color-picker.module';
 import { PhotoService } from './photoservice/photo.service';
 import { SettingService } from './settingservice/setting.service';
 import { DatabaseService } from './database/database.service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NgbModule,
     FormsModule,
     FontAwesomeModule,
+    Ng2SearchPipeModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType:'danger'
     }),
