@@ -115,15 +115,10 @@ export class HomeComponent implements OnInit {
   }
 
   constraints = {
-    // video: {
-    //     facingMode: "environment",
-    //     width: { ideal: 240 },
-    //     height: { ideal: 320 }
-    // }
     video: {
       facingMode: "environment",
-      width: { min: 400, ideal: 1080 },
-      height: { min: 640, ideal: 1920 },
+      // height: { min: 400, ideal: 1080 },
+      // weight: { min: 640, ideal: 1920 }
       aspectRatio: { ideal: 0.5625 }
     }
   };

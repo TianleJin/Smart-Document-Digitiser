@@ -50,17 +50,6 @@
                             (cancel)="cancelClicked=true">Delete</button>
                         </td>
                     </tr>
-                    <!-- <tr>
-                        <td colspan="7" id="comments" [ngbCollapse]="object.isCollapsed">
-                            <p>Comments:</p><br>
-                            <p>{{object.comments}}</p>
-                            <ul >
-                                <li *ngFor="let file of item.pictures">
-                                    <img src="image/{{file.filename}}">
-                                </li>
-                            </ul>
-                        </td>
-                    </tr> -->
                 </tbody>
                 <pagination-controls (pageChange)="page=$event"></pagination-controls>
             </table>
