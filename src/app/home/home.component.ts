@@ -286,8 +286,6 @@ export class HomeComponent implements OnInit {
   storePictures() {
     this.pictures.push(this.blob);
     this.captures.push(this.picture);
-    this.dbService.createPhoto(this.blob, this.invoiceID).subscribe((res)=>{console.log("photo is uploaded");
-    });
     this.isShow = true;
     this.previewInfo = [];
     this.unmappedInfo = [];

@@ -39,10 +39,4 @@ export class DatabaseService {
     let url = '/records/' + invoiceID;
     return this.http.delete(url, httpOptions);
   }
-
-  // create a new photo
-  createPhoto(data, invoiceID){
-    let url = '/photo/' + invoiceID;
-    return this.http.post(url, data);
-  }
 }
