@@ -1,4 +1,4 @@
-import { DatabaseService } from '../database/database.service';
+import { DatabaseService } from '../databaseservice/database.service';
 import { Component, OnInit } from '@angular/core';
 //import fieldsJSON from "../../assets/field/field.json"
 import { HttpClient } from '@angular/common/http';

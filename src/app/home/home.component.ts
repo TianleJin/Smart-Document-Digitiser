@@ -1,6 +1,6 @@
 import { log } from 'util';
 import { first } from 'rxjs/operators';
-import { DatabaseService } from '../database/database.service';
+import { DatabaseService } from '../databaseservice/database.service';
 import { PhotoService } from '../photoservice/photo.service';
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';

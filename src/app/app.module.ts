@@ -23,7 +23,7 @@ import { TrackComponent } from './track/track.component';
 import { ColorPickerModule } from './color-picker/color-picker.module';
 import { PhotoService } from './photoservice/photo.service';
 import { SettingService } from './settingservice/setting.service';
-import { DatabaseService } from './database/database.service';
+import { DatabaseService } from './databaseservice/database.service';
 
 
 @NgModule({

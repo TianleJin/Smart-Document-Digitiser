@@ -30,19 +30,11 @@ export class DatabaseService {
 
   // // update a invoice record
   // updateRecord(invoiceID, data) {
-  //   let url = '/records/' + invoiceID;
-  //   return this.http.put(url, data, httpOptions);
   // }
 
   // delete a invoice record
   deleteRecord(invoiceID) {
     let url = '/records/' + invoiceID;
     return this.http.delete(url, httpOptions);
-  }
-
-  // create a new photo
-  createPhoto(data, invoiceID){
-    let url = '/photo/' + invoiceID;
-    return this.http.post(url, data);
   }
 }
