@@ -44,6 +44,30 @@ li {
     border: none;
 }
 
+#display-table {
+    border: 1px solid black;
+    width: 80%;
+}
+
+.outlined-cell {
+    border: 1px solid black;
+}
+
+.outlined-cell td, th {
+    padding: 15px;
+    border: 1px solid black;
+}
+
+.table-title {
+    background: lightblue;
+}
+
+#unmapped-area {
+    width: 80%;
+    display: wrap;
+}
+
+
 @media (max-width: 768px) {
     .preview-box {
         border-right: 1px solid rgb(60, 60, 60);

@@ -63,7 +63,9 @@ export class HomeComponent implements OnInit {
   getResError: Object; 
   //getRes: Object;
   getRes: Object = DummyData;
+  unmappedInfo = [];
   previewInfo = [];
+  previewError: string;
 
   private FIELD_PATH = "assets/field/field.json";
 
@@ -150,6 +152,8 @@ export class HomeComponent implements OnInit {
     if (this.section == 2) {
       this.startCamera();
       this.previewInfo = [];
+      this.unmappedInfo = [];
+      this.previewError = undefined;
     } 
     this.isShow = true;
 
@@ -279,13 +283,15 @@ export class HomeComponent implements OnInit {
     return true;
   };
 
-  storePictures(){
+  storePictures() {
     this.pictures.push(this.blob);
     this.captures.push(this.picture);
     this.dbService.createPhoto(this.blob, this.invoiceID).subscribe((res)=>{console.log("photo is uploaded");
     });
     this.isShow = true;
     this.previewInfo = [];
+    this.unmappedInfo = [];
+    this.previewError = undefined;
     // for (let i = 0; i < this.captures.length; i++) {
     //   this.pictures.push(this.captures[i]);
     // }
@@ -300,14 +306,18 @@ export class HomeComponent implements OnInit {
   retake() {
     this.isShow = true;
     this.previewInfo = [];
+    this.unmappedInfo = [];
+    this.previewError = undefined;
   }
 
   preview() {
     this.previewInfo = [];
     if (this.uploadResError) {
-      this.previewInfo.push("Error: Unable to upload to the server. Please try again later!");
+      this.previewError = "Error: Unable to upload to the server. Please try again later!";
+      return;
     } else if (this.getResError) {
-      this.previewInfo.push("Error: Unable to connect to the server. Please try again later!");
+      this.previewError = "Error: Unable to connect to the server. Please try again later!";
+      return;
     } else {
       if ("data" in this.getRes) {
         console.log(this.getRes["data"]);
@@ -319,7 +329,7 @@ export class HomeComponent implements OnInit {
             console.log(fieldsData);
             let j = 0;
             while ("field_" + j in fieldsData) {
-              let text = fieldsData["field_" + j]["Field_Name"] + ": " + fieldsData["field_" + j]["Value"];
+              let text = fieldsData["field_" + j]["Field_Name"] + ":" + fieldsData["field_" + j]["Value"];
               if ("possible_value_group" in fieldsData["field_" + j]) {
                 text += " " + fieldsData["field_" + j]["possible_value_group"][0];
               }
@@ -327,15 +337,22 @@ export class HomeComponent implements OnInit {
               j++;
             }
           } 
-          if ("Unmapped" in page && page["Unmapped"] != undefined) {
+          if ("Unmapped" in page && page["Unmapped"] !== undefined) {
             const fieldsData = page["Unmapped"]["Fields"];
             console.log("fieldData");
+            let text = "";
             let j = 0;
             while (j in fieldsData) {
-              let text = fieldsData[j]["field_" + j]["field_value"];
-              this.previewInfo.push(text);
+              if (text.length > 0) {
+                text += ", "
+              }
+              text += fieldsData[j]["field_" + j]["field_value"];
               j++;
             }
+            if (text.length > 0) {
+              this.unmappedInfo.push(text);
+            }
+            console.log(this.unmappedInfo);
           }
           i++;
         }
@@ -344,7 +361,7 @@ export class HomeComponent implements OnInit {
     console.log(this.previewInfo);
     
     if (this.previewInfo.length == 0) {
-      this.previewInfo.push("No texts were found in the image. Please try again!");
+      this.previewError = "Error: No labelled texts were identified in the image. Please try again!";
     }
   }
 }
