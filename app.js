@@ -3,17 +3,12 @@ const bodyParser = require('body-parser');
 const mongodb = require('mongodb');
 const fs = require('fs');
 const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
-const Grid = require('gridfs-stream');
 
 const mongoURI = "mongodb://" + process.argv[2] + ":27017/infosys";
 const RECORDS_COLLECTION = 'records';
 let path = require('path');
 
-//const records = require('./routers/record');
-
 const app = express();
-//app.use(testMiddleware);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/", express.static(path.join(__dirname, "dist/admin/")));
@@ -21,8 +16,6 @@ app.use("/", express.static(path.join(__dirname, "dist/admin/")));
 // database variable
 var db;
 
-// Init gfs
-let gfs;
 
 // connect mongodb client
 mongodb.MongoClient.connect(mongoURI, function(err, client) {
@@ -31,13 +24,7 @@ mongodb.MongoClient.connect(mongoURI, function(err, client) {
     process.exit(1);
   }
   db = client.db();
-  gfs = Grid(db, mongodb);
-  gfs.collection('photos');
   console.log('Database connected successfully');
-  // var server = app.listen(process.env.PORT || 4200, function() {
-  //   var port = server.address().port;
-  //   console.log("Web App is running on port", port);
-  // })
   app.listen(4200, function(){
     console.log("Web App is running on port 4200");
   });
@@ -92,7 +79,6 @@ app.get('/records/:invoiceID', function(req, res){
 
 // Update a single record
 // app.put('/records/:invoiceID', function(req, res){
-
 // });
 
 // Delete a single record
@@ -107,7 +93,7 @@ app.delete('/records/:invoiceID', function(req, res){
 });
 
 // RESTful API for setting(backgroud color, input fields, logo imgae)
-// read color and upload color
+// read color 
 app.get('/color', function (req, res){
     fs.readFile('dist/admin/assets/color/color.json', function(err, content) {
         if (err) {
@@ -117,7 +103,8 @@ app.get('/color', function (req, res){
         }
     })
 });
-  
+
+// update color
 app.post('/color', function (req, res){
     const jsonString = JSON.stringify(req.body);
     if (!jsonString) {
@@ -142,8 +129,7 @@ app.post('/color', function (req, res){
 })
 
 
-
-// read fields and upload fields
+// read fields
 app.get('/field', (req, res) => {
     fs.readFile('dist/admin/assets/field/field.json', function(err, content) {
         if (err) {
@@ -153,7 +139,8 @@ app.get('/field', (req, res) => {
         }
     })
 });
-  
+
+//update fields
 app.post('/field', (req, res) => {
     const jsonString = JSON.stringify(req.body);
     if (!jsonString) {
@@ -236,44 +223,9 @@ function fileUpload(req, res, next) {
     next();
 };
 
-// Upload image api
-app.post('/image', fileUpload, (req, res, next) => {
-    const file = req.file;
+// Upload image
+app.post('/image', fileUpload, (req, res) => {
     res.send("Received files");
-    // if (!file) {
-    //     handleError(res, "Invalid image file", "Must provide a image.", 400);
-    // } else {
-    //     console.log('Successfully upload file');
-    // }
 });
 
 
-//Create storage engine
-const grifsStorage = new GridFsStorage({
-    url: mongoURI,
-    file: (req, file) => {
-      return new Promise((resolve, reject) => {
-        crypto.randomBytes(16, (err, buf) => {
-          if (err) {
-            return reject(err);
-          }
-          const filename = buf.toString('hex') + path.extname(file.originalname);
-          const metadata = req.params.invoiceID;
-          const fileInfo = {
-            filename: filename,
-            bucketName: 'photos',
-            metadata: metadata
-          };
-          resolve(fileInfo);
-        });
-      });
-    }
-  });
-  
-const upload = multer({ grifsStorage });
-
-// // @route POST /upload
-// // @desc  Uploads file to DB
-// app.post('/photo/:invoiceID', upload.single('file'), (req, res) => {
-//     res.json({ file: req.file });
-// });
