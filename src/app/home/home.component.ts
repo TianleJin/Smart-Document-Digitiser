@@ -1,10 +1,8 @@
-import { log } from 'util';
 import { first } from 'rxjs/operators';
 import { DatabaseService } from '../databaseservice/database.service';
 import { PhotoService } from '../photoservice/photo.service';
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TimeoutError, fromEventPattern, NEVER } from 'rxjs';
 import  DummyData from '../photoservice/sample.json';
 import { faCamera, faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
 import { NgxSmartModalService } from 'ngx-smart-modal';

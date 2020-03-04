@@ -3,7 +3,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { SettingService } from '../settingservice/setting.service';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { User } from '@app/_models';

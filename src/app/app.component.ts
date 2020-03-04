@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './authentication/authentication.service';
 import { User, Role } from './_models';
 import { faHome, faCog, faTable, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { log } from 'util';
 
 
 @Component({
