@@ -144,10 +144,15 @@ export class HomeComponent implements OnInit {
 
   changeSection(sectionId) {
     this.section = sectionId;
+    if (this.section == 1) {
+      this.pairArray = [];
+    }
     if (this.section == 2) {
       this.startCamera();
+      this.previewInfo = [];
     } 
     this.isShow = true;
+
   }
 
   onSaveDetails() {
@@ -185,6 +190,7 @@ export class HomeComponent implements OnInit {
       obj["extra"] = tempObj;
       this.dbService.createRecord(obj).subscribe(result => {});
       this.changeSection(4);
+      this.captures = [];
       this.clearDetails();
     } else {this.changeSection(1)}
   }

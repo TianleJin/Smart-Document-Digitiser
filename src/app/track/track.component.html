@@ -23,7 +23,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let object of recordsDB | filter:searchText | paginate: { itemsPerPage: 5, currentPage: page}; let i = index">
+                    <!--| paginate: { itemsPerPage: 5, currentPage: page}-->
+                    <tr *ngFor="let object of recordsDB | filter:searchText; let i = index">
                         <td>{{object.invoiceID}}</td>
                         <td>{{object.recordDate}}</td>
                         <td *ngFor="let item of object['array']">{{item}}</td>
@@ -55,7 +56,6 @@
                     </tr>
                 </tbody>
             </table>
-            <pagination-controls (pageChange)="page=$event"></pagination-controls>
          </div>
     </div>
 </div>
