@@ -24,33 +24,31 @@ export class HomeComponent implements OnInit {
   faTrash = faTrash;
   faSave = faSave;
 
+  // require moment to generate date
   moment = require('moment');
 
   loading = false;
   currentUser: User;
   userFromApi: User;
-  section = 1;
-  videoWidth = 0;
-  videoHeight = 0;
-  // basic info fields
-  invoiceID: String = "";
-  recordDate: String = "";
-  status: String;
-  comments: String;
-  inputAlert: String = "fdasfsdfs";
+  section: number = 1;
+  videoWidth: number= 0;
+  videoHeight: number = 0;
 
-  picture: String;
+  // basic info fields
+  invoiceID: string = "";
+  recordDate: string = "";
+  status: string = "";
+  comments: string = "";
+
+  inputAlert: string = "";
+  picture: string;
   blob;
-  pictures: Array<String> = [];
-  image;
-  canvasElement;
   captures: Array<any> = [];
-  isShow = true;
-  fieldJSON;
-  numberOfField;
-  fieldArray = [];
-  valueArray = [];
-  pairArray = [];
+  isShow: boolean = true;
+
+  fieldArray: Array<any> = [];
+  valueArray: Array<any> = [];
+  pairArray: Array<any> = [];
 
   // jwt key for OCR API
   jwt: any;
@@ -59,10 +57,9 @@ export class HomeComponent implements OnInit {
   uploadResError: Object; 
   uploadRes: Object; 
   getResError: Object; 
-  //getRes: Object;
   getRes: Object = DummyData;
-  unmappedInfo = [];
-  previewInfo = [];
+  unmappedInfo: Array<any> = [];
+  previewInfo: Array<any> = [];
   previewError: string;
 
   private FIELD_PATH = "assets/field/field.json";
@@ -91,15 +88,16 @@ export class HomeComponent implements OnInit {
     this.getFields();
     this.photo.getJwt().subscribe((data) => {
       this.jwt = data;
-      //console.log(data);
-      //console.log(typeof(data));
     });
   }
 
+  // access video and canvas elements
   @ViewChild('video', { static: false}) videoElement: ElementRef;
   @ViewChild('canvas', { static: false}) canvas: ElementRef;
 
   // Get all fields from dist/smart/assets/field/field.json
+  fieldJSON;
+  numberOfField;
   getFields() {
     this.http.get(this.FIELD_PATH).subscribe((data) => {
       this.fieldJSON = data;
@@ -117,8 +115,6 @@ export class HomeComponent implements OnInit {
   constraints = {
     video: {
       facingMode: "environment",
-      // height: { min: 400, ideal: 1080 },
-      // weight: { min: 640, ideal: 1920 }
       aspectRatio: { ideal: 0.5625 }
     }
   };
@@ -142,6 +138,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // chagng section, called in html file
   changeSection(sectionId) {
     this.section = sectionId;
     if (this.section == 1) {
@@ -154,11 +151,11 @@ export class HomeComponent implements OnInit {
       this.previewError = undefined;
     } 
     this.isShow = true;
-
   }
 
+  // save input details
   onSaveDetails() {
-    if (this.validateFrom()) {
+    if (this.validateForm()) {
       this.recordDate = this.moment().format("YYYY-MM-DD hh:mm a");
       this.status = "Uploaded";
       this.comments = "";
@@ -173,8 +170,9 @@ export class HomeComponent implements OnInit {
     };
   }
 
+  // upload to input record to database
   onSaveRecord() {
-    if (this.validateFrom()) {
+    if (this.validateForm()) {
       let obj = {
         invoiceID: this.invoiceID,
         recordDate: this.recordDate,
@@ -197,6 +195,7 @@ export class HomeComponent implements OnInit {
     } else {this.changeSection(1)}
   }
 
+  // clear all input 
   clearDetails() {
     this.invoiceID = "";
     for (let i = 0; i < this.valueArray.length; i++) {
@@ -204,25 +203,19 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // capture an image
   capture() {
     this.renderer.setProperty(this.canvas.nativeElement, 'width', this.videoWidth);
     this.renderer.setProperty(this.canvas.nativeElement, 'height', this.videoHeight);
     this.canvas.nativeElement.getContext('2d').drawImage(this.videoElement.nativeElement, 0, 0);
     this.renderer.setProperty(this.videoElement.nativeElement, 'display', "none");
     this.picture = this.canvas.nativeElement.toDataURL("image/png");
-    console.log(this.picture);
-    
     this.isShow = false;
     this.blob = this.dataURLtoBlob(this.picture);
-    // console.log(this.blob);
-    //var blob = this.dataURLtoBlob(this.picture);
     this.uploadImg(this.blob, this.jwt, this.template_name, this.document_name);  
-    //this.captures.push(this.picture);
-    // console.log(this.canvas.nativeElement.toDataURL("image/png"));
-    // console.log(typeof(this.canvas.nativeElement.toDataURL("image/png")));  
-    // console.log(this.captures);
   }
 
+  // upload image to ocr server
   uploadImg(blob, jwt, template_name, document_name) {
     this.uploadResError = undefined; 
     this.uploadRes = undefined; 
@@ -257,7 +250,7 @@ export class HomeComponent implements OnInit {
     )
   };
 
-  // convert a dataurl to blob
+  // convert dataURL to Blob
   dataURLtoBlob(dataurl) {
     var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
@@ -267,7 +260,8 @@ export class HomeComponent implements OnInit {
     return new Blob([u8arr], {type:mime});
   }
 
-  validateFrom() {
+  // validate form input 
+  validateForm() {
     if (this.invoiceID === "") {
       this.inputAlert = "Invoice ID must be provided!";
       return false;
@@ -281,24 +275,16 @@ export class HomeComponent implements OnInit {
     return true;
   };
 
+  // save pictures in an arrya in order to show in review page
   storePictures() {
-    this.pictures.push(this.blob);
     this.captures.push(this.picture);
     this.isShow = true;
     this.previewInfo = [];
     this.unmappedInfo = [];
     this.previewError = undefined;
-    // for (let i = 0; i < this.captures.length; i++) {
-    //   this.pictures.push(this.captures[i]);
-    // }
-    console.log(this.pictures);
-    
   };
 
-  deletePictures() {
-    this.pictures = [];
-  }
-
+  // retake a image
   retake() {
     this.isShow = true;
     this.previewInfo = [];
@@ -306,6 +292,7 @@ export class HomeComponent implements OnInit {
     this.previewError = undefined;
   }
 
+  // preview OCR results
   preview() {
     this.previewInfo = [];
     if (this.uploadResError) {
