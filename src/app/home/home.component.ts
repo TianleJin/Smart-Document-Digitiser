@@ -8,7 +8,6 @@ import { faCamera, faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
 import { User } from '@app/_models';
-import { UserService } from '@app/userservice/user.service';
 import { AuthenticationService } from '@app/authentication/authentication.service';
 
 
@@ -27,9 +26,6 @@ export class HomeComponent implements OnInit {
   // require moment to generate date
   moment = require('moment');
 
-  loading = false;
-  currentUser: User;
-  userFromApi: User;
   section: number = 1;
   videoWidth: number= 0;
   videoHeight: number = 0;
@@ -68,23 +64,15 @@ export class HomeComponent implements OnInit {
       (click)="modal.close('Ok click')">Ok</button>`;
 
   constructor(
-      private userService: UserService,
-      private authenticationService: AuthenticationService,
       private renderer: Renderer2, 
       private dbService: DatabaseService, 
       private http: HttpClient, 
       private photo: PhotoService,
       public ngxSmartModalService: NgxSmartModalService,
   ) {
-      this.currentUser = this.authenticationService.currentUserValue;
   }
 
   ngOnInit() {
-    this.loading = true;
-    this.userService.getById(this.currentUser.id).pipe(first()).subscribe(user => {
-        this.loading = false;
-        this.userFromApi = user;
-    });
     this.getFields();
     this.photo.getJwt().subscribe((data) => {
       this.jwt = data;

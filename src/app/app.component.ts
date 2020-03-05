@@ -32,15 +32,16 @@ export class AppComponent {
         private authenticationService: AuthenticationService,
         private http: HttpClient
     ) {
+    }
+
+    ngOnInit() {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
         this.getColor();
     }
 
-    ngOnInit() {}
-
+    // get color and set nav bar background color
     getColor() {
         this.http.get(this.COLOR_PATH).subscribe(data => {
-            console.log(data);
             this.mainStyle = {
                 background: data["background"]
                 };
@@ -50,10 +51,12 @@ export class AppComponent {
         })
     }
 
-    get isAdmin() {
+    // check if administrator
+    isAdmin() {
         return this.currentUser && this.currentUser.role === Role.Admin;
     }
 
+    // logout nav bar
     logout() {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
