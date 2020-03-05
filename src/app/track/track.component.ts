@@ -17,11 +17,11 @@ export class TrackComponent implements OnInit {
   // icons
   faSearch = faSearch;
 
-  recordsDB: any[] = [];
-  outputDB: any[] = [];
-  extraFields: any[] = [];
-  allFields: any[] = [];
-  numberOfField;
+  recordsDB: Array<any> = [];
+  outputDB: Array<any> = [];
+  extraFields: Array<any> = [];
+  allFields: Array<any> = [];
+  numberOfField: number = 0;
   fieldJSON;
 
   popoverTitle: string = "Record Delete Confirmation";
@@ -32,24 +32,19 @@ export class TrackComponent implements OnInit {
   private FIELD_PATH = 'assets/field/field.json';
 
   searchText: string;
-  page: number=1;
 
-  
   ngOnInit() {
-    this.setUpList();
-    this.onGetRecords();
+    this.setUpTable();
   }
 
+  // Get all invoices record from database
   onGetRecords() {
     this.dbService.getRecords().subscribe((data:any[])=>{
       this.recordsDB = data;
       for (let i = 0; i < this.recordsDB.length; i++) {
         var obj = this.recordsDB[i];
-        // this.dbService.getFiles(obj.invoiceID).subscribe((data:any[]) => {
-        //   obj['pictures'] = data;
-        // })
-        obj["isCollapsed"] = true;
         obj["array"] = [];
+        obj["extra"] = {};
         for (let i = 0; i < this.numberOfField; i ++) {
           if (obj["extra"][this.extraFields[i]]) {
             obj["array"].push(obj["extra"][this.extraFields[i]]);
@@ -61,7 +56,8 @@ export class TrackComponent implements OnInit {
     });
   }
 
-  setUpList() {
+  // set up table
+  setUpTable() {
     this.http.get(this.FIELD_PATH).subscribe((content) => {
       this.allFields = ["invoiceID", "recordDate"];
       this.fieldJSON = content;
@@ -72,10 +68,12 @@ export class TrackComponent implements OnInit {
         this.extraFields.push(fieldObj[j].name);
       }
       this.allFields.push("status");
-      this.allFields.push("comments");      
+      this.allFields.push("comments");  
+      this.onGetRecords();    
     });
   }
 
+  // delete invoice record from database
   deleteRecord(invoiceID) {
     this.dbService.deleteRecord(invoiceID).subscribe(result => {this.onGetRecords();
     });
