@@ -16,7 +16,6 @@ app.use("/", express.static(path.join(__dirname, "dist/admin/")));
 // database variable
 var db;
 
-
 // connect mongodb client
 mongodb.MongoClient.connect(mongoURI, function(err, client) {
   if (err) {
