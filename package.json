@@ -25,7 +25,6 @@
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
-    "@ng-bootstrap/ng-bootstrap": "^6.0.0",
     "RWD-Table-Patterns": "^5.3.3",
     "angular-confirmation-popover": "^4.2.2",
     "body-parser": "^1.19.0",

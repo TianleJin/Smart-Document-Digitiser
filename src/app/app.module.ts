@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -40,7 +39,6 @@ import { DatabaseService } from './databaseservice/database.service';
     ReactiveFormsModule,
     HttpClientModule,
     ColorPickerModule,
-    NgbModule,
     FormsModule,
     FontAwesomeModule,
     Ng2SearchPipeModule,

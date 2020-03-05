@@ -1,13 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { first } from 'rxjs/operators';
 import { SettingService } from '../settingservice/setting.service';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-
-
-import { User } from '@app/_models';
-import { UserService } from '../userservice/user.service';
-
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
 
@@ -18,9 +12,6 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
-  loading:boolean = false;
-  users:User[] = [];
   style:any;
   images:any;
   section:number;
@@ -34,18 +25,12 @@ export class AdminComponent implements OnInit {
   private COLOR_PATH = 'assets/color/color.json';
 
   constructor(
-    private userService: UserService, 
     private setting: SettingService, 
     private formBuilder: FormBuilder,
     public ngxSmartModalService: NgxSmartModalService) { };
     
   ngOnInit() {
     this.setting.currentStyle.subscribe(style => this.style = style);
-    this.loading = true;
-    this.userService.getAll().pipe(first()).subscribe(users => {
-        this.loading = false;
-        this.users = users;
-    });
     this.dynamicForm = this.formBuilder.group({
       numberOfFields: ['', Validators.required],
       fields: new FormArray([])
