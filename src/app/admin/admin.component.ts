@@ -19,14 +19,14 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 })
 export class AdminComponent implements OnInit {
 
-  loading = false;
-  users: User[] = [];
-  style;
-  images;
-  section;
-  isLogoSubmit = false;
-  isColorSubmit = false;
-  isFieldSubmit = false;
+  loading:boolean = false;
+  users:User[] = [];
+  style:any;
+  images:any;
+  section:number;
+  isLogoSubmit:boolean = false;
+  isColorSubmit:boolean = false;
+  isFieldSubmit:boolean = false;
 
   closeResult: string;
 
@@ -37,10 +37,8 @@ export class AdminComponent implements OnInit {
     private userService: UserService, 
     private setting: SettingService, 
     private formBuilder: FormBuilder,
-    public ngxSmartModalService: NgxSmartModalService,
-    private http: HttpClient) { };
+    public ngxSmartModalService: NgxSmartModalService) { };
     
-
   ngOnInit() {
     this.setting.currentStyle.subscribe(style => this.style = style);
     this.loading = true;
@@ -80,21 +78,11 @@ export class AdminComponent implements OnInit {
     if (bgColor) {
       this.isColorSubmit = true;
     }
-   
-    console.log(this.isColorSubmit);
     const linkColor = this.linkColor(bgColor);
-
-    // const newStyle = {
-    //     background: bgColor,
-    //     color: linkColor
-    // }
-
     this.setting.setColor({
       'background': bgColor,
       'color': linkColor
-    }).subscribe((res) => {
-      
-    });
+    }).subscribe((res) => {});
   }
 
   linkColor(color) {
@@ -115,9 +103,6 @@ export class AdminComponent implements OnInit {
   get t() { return this.f.fields as FormArray; }
 
   onChangeFields(e) {
-    // if(e.target.value && e.target.value === 0) {
-    //   this.isFieldSubmit = true;
-    // }
     const numberOfFields = e.target.value || 0;
     if (this.t.length < numberOfFields) {
         for (let i = this.t.length; i < numberOfFields; i++) {
@@ -142,20 +127,17 @@ export class AdminComponent implements OnInit {
 
   onSubmitFields() {
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.dynamicForm.invalid) {
       return;
     } 
-
     // display form values on success
-    //alert("Fields have been changed");
     this.isFieldSubmit = true;
-    
     // save values on server
     this.setting.setFields(this.dynamicForm.value).subscribe((res) => console.log(res));
   }
 
+  // reset fields
   onReset() {
     // reset whole form back to initial state
     this.submitted = false;
@@ -163,6 +145,7 @@ export class AdminComponent implements OnInit {
     this.t.clear();
   }
 
+  // clear fields input
   onClear() {
     // clear errors and reset fields
     this.submitted = false;
@@ -180,8 +163,6 @@ export class AdminComponent implements OnInit {
   reloadPage(){
     var location = window.location;
     console.log(location.origin);
-    
     location.assign(location.origin);
-    //location.reload();
   }
 }
