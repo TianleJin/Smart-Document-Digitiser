@@ -8,7 +8,7 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {NgxPaginationModule} from 'ngx-pagination';
+
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -44,7 +44,6 @@ import { DatabaseService } from './databaseservice/database.service';
     FormsModule,
     FontAwesomeModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType:'danger'
     }),

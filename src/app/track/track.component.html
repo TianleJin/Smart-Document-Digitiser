@@ -23,7 +23,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!--| paginate: { itemsPerPage: 5, currentPage: page}-->
                     <tr *ngFor="let object of recordsDB | filter:searchText; let i = index">
                         <td>{{object.invoiceID}}</td>
                         <td>{{object.recordDate}}</td>
