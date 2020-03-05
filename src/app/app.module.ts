@@ -11,7 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { JwtInterceptor } from './_helpers';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,7 +49,6 @@ import { DatabaseService } from './databaseservice/database.service';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
     // provider used to create fake backend
     fakeBackendProvider,
