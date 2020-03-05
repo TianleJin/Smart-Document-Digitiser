@@ -8,7 +8,7 @@ import { faCamera, faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
 import { User } from '@app/_models';
-import { UserService } from '@app/user/user.service';
+import { UserService } from '@app/userservice/user.service';
 import { AuthenticationService } from '@app/authentication/authentication.service';
 
 
