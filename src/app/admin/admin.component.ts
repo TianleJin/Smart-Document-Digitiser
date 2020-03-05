@@ -6,7 +6,8 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 
 import { User } from '@app/_models';
-import { UserService } from '@app/user/user.service';
+import { UserService } from '../userservice/user.service';
+
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
 
