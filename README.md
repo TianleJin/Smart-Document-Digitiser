@@ -1,6 +1,6 @@
 # Smart-Document-Digitiser
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
+An ocr application which capture key fields from a document.
 
 ## Development server
 
