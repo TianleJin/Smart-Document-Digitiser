@@ -1,6 +1,6 @@
 # Smart-Document-Digitiser
 
-MEAN web application that scans and collects field information from documents.
+MEAN web application that scans and extracts field information from physical documents.
 
 ## Development server
 
