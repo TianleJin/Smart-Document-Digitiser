@@ -1,6 +1,6 @@
 # Smart-Document-Digitiser
 
-An ocr application which captures key fields from a document.
+MEAN web application that scans and collects field information from documents.
 
 ## Development server
 
